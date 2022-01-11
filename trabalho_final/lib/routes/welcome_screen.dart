@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/routes/login_screen.dart';
+import 'package:trabalho_final/routes/signup_screen.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -24,20 +25,41 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Container(
             child: Center(
-              child: ElevatedButton(
-                child: Text("Login"),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return LoginScreen();
-                  }));
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: corPrimaria,
-                  textStyle: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    child: Text("Sign up"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return SignUpScreen();
+                      }));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: corPrimaria,
+                      textStyle: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    child: Text("Login"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return LoginScreen();
+                      }));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: corPrimaria,
+                      textStyle: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
