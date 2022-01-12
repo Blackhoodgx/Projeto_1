@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:trabalho_final/routes/signup_screen.dart';
-import 'package:trabalho_final/routes/welcome_screen.dart';
+import 'package:trabalho_final/routes/homepage.dart';
 import 'package:trabalho_final/utilities/HashPassword.dart';
 import 'package:trabalho_final/utilities/ReadStoredData.dart';
 import 'package:trabalho_final/utilities/constants.dart';
@@ -236,7 +235,7 @@ class _LoginScreen extends State<LoginScreen> {
             userPassword = hashPass;
             // go to the welcome page
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return WelcomeScreen();
+              return Homepage();
             }));
           } else {
             errorPasswordMensagem = "your Password is incorrect";

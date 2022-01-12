@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:trabalho_final/components/body.dart';
-import 'package:trabalho_final/routes/login_screen.dart';
-import 'package:trabalho_final/routes/welcome_screen.dart';
+import 'package:trabalho_final/routes/homepage.dart';
 import 'package:trabalho_final/utilities/HashPassword.dart';
 import 'package:trabalho_final/utilities/StoreData.dart';
 import 'package:trabalho_final/utilities/constants.dart';
@@ -297,7 +296,7 @@ class _SignUpScreen extends State<SignUpScreen> {
         userEmail = email;
         userPassword = hashPass;
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return WelcomeScreen();
+          return Homepage();
         }));
       }
     });
