@@ -14,18 +14,14 @@ class _Search extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF242D3C),
-    body: ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width*0.07,
-            vertical: MediaQuery.of(context).size.height*0.14),
-            child: TextField(
-
-            ),
-        ),
-      
-    ]));
+        backgroundColor: Color(0xFF242D3C),
+        body: ListView(children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.07,
+                vertical: MediaQuery.of(context).size.height * 0.14),
+            child: TextField(),
+          ),
+        ]));
   }
 }
