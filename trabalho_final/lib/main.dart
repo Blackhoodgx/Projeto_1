@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/routes/homepage.dart';
-import 'package:trabalho_final/routes/welcome_screen.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/routes/search.dart';
 import "package:trabalho_final/routes/login_screen.dart";
