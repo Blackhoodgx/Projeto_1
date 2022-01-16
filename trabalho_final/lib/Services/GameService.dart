@@ -10,6 +10,8 @@ class GameService {
     if(response.statusCode == 200){
       List<GameHome> gameHome = jsonDecode(response.body)
       ['results'].map<GameHome>((jsonItem) => GameHome.fromJson(jsonItem)).toList();
+
+      return gameHome;
     }else{
       throw Exception("unenable to load games");
     }

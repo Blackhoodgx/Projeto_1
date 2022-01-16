@@ -9,18 +9,45 @@ class _Search extends State<Search> {
   @override
   void initState() {}
   var _formKey = GlobalKey<FormState>();
-  TextEditingController tempController = TextEditingController();
+  var textFieldHintSeach = "Pesquisa aqui";
+  TextEditingController searchTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF242D3C),
+        backgroundColor: Color.fromRGBO(50, 71, 104, 1.0), //Color(0xFF242D3C),
         body: ListView(children: [
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.07,
                 vertical: MediaQuery.of(context).size.height * 0.14),
-            child: TextField(),
+            child: TextField(
+              controller:  searchTextController,
+              decoration: InputDecoration(
+                fillColor: Color.fromRGBO(36, 45, 60, 1.0),
+                filled: true,
+                border:OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                prefixIcon: Padding(
+                  padding: EdgeInsets.only(left: 40, right: 20),
+                  child: Icon(
+                    Icons.search,
+                    color: Color(0xFF4EB947),
+                  ),
+                ),
+                hintText: textFieldHintSeach,
+                hintStyle: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ),
         ]));
   }

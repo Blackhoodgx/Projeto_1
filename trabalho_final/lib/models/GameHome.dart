@@ -2,6 +2,7 @@ class GameHome{
   final String gameTitle;
   final String gameBackgroundImage;
 
+
   GameHome({
     required this.gameTitle,
     required this.gameBackgroundImage,
