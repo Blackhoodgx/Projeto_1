@@ -3,6 +3,8 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/Services/GameService.dart';
 import 'package:trabalho_final/models/GameHome.dart';
+import 'package:trabalho_final/routes/game_details_page.dart';
+import 'package:trabalho_final/utilities/global_variables.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -23,20 +25,20 @@ class _Homepage extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF242D3C),
-      body: GridView.count(
-        crossAxisCount: 2, // (number of elements in a row)
-        mainAxisSpacing: MediaQuery.of(context).size.height * 0.04, // (horizontal space between elements)
-        crossAxisSpacing: MediaQuery.of(context).size.width * 0.11, // (vertical space between elements)
-        children: List.generate(
-          gamesInHomePage.length,
-          (index) {
-            return GameDisplay(
-              game: gamesInHomePage[index], content: context);
-          },
-        )
-      )
-    );
+        backgroundColor: Color(0xFF242D3C),
+        body: GridView.count(
+            crossAxisCount: 2, // (number of elements in a row)
+            mainAxisSpacing: MediaQuery.of(context).size.height *
+                0.04, // (horizontal space between elements)
+            crossAxisSpacing: MediaQuery.of(context).size.width *
+                0.11, // (vertical space between elements)
+            children: List.generate(
+              gamesInHomePage.length,
+              (index) {
+                return GameDisplay(
+                    game: gamesInHomePage[index], content: context);
+              },
+            )));
   }
 
   Future<void> _getGameHome() async {
@@ -74,15 +76,24 @@ class GameDisplay extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.35,
             height: MediaQuery.of(context).size.height * .14,
           ),
-          Text(
-            game.gameTitle,
-            style: TextStyle(
-              fontSize: 20,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
+          TextButton(
+            onPressed: () {
+              idGame = game.gameId;
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return GameDetialsPage();
+              }));
+            },
+            child: Text(
+              game.gameTitle,
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                color: Colors.white,
+              ),
             ),
           ),
+          //Text(game.gameId.toString()),
         ],
       ),
     );
