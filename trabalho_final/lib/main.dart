@@ -35,6 +35,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final _pages = [
@@ -50,6 +52,88 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              ListTile(
+                title: Text("Item 1"),
+                trailing: Icon(Icons.arrow_forward),
+              ),
+              ListTile(
+                title: Text("Item 2"),
+                trailing: Icon(Icons.arrow_forward),
+              ),
+            ],
+          ),
+        ),
+        appBar: AppBar(
+            toolbarHeight: 85,
+            title: Text(
+              "DAW APP",
+              style: TextStyle(color: corPrimaria),
+            ),
+            backgroundColor: backGroundColor,
+            leading: GestureDetector(
+                onTap: () {
+                  if (Scaffold.of(context).isDrawerOpen) {
+                    Scaffold.of(context).openEndDrawer();
+                  } else {
+                    Scaffold.of(context).openDrawer();
+                  }
+                  print("miguel");
+                },
+                child: Center(
+                    child: Container(
+                  width: MediaQuery.of(context).size.height * 0.05,
+                  height: MediaQuery.of(context).size.height * 0.05,
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(color: corPrimaria, width: 2)),
+                  child: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                  ),
+                ))),
+            actions: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: ButtonBar(children: [
+                  TextButton(
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: BorderSide(color: corPrimaria, width: 2.0),
+                          ),
+                        ),
+                      )),
+                  TextButton(
+                      child: Text(
+                        'Registar',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: BorderSide(color: corPrimaria, width: 2.0),
+                          ),
+                        ),
+                      ))
+                ]),
+              ),
+            ]),
         body: Center(
           child: _pages.elementAt(_selectedIndex),
         ),
