@@ -9,6 +9,7 @@ class GameDetialsPage  extends StatefulWidget {
 }
 
 class _GameDetialsPage extends State<GameDetialsPage> {
+  
   @override
   void initState() {}
 
