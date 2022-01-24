@@ -1,6 +1,6 @@
-import 'package:trabalho_final/utilities/HashPassword.dart';
-import 'package:trabalho_final/utilities/validEmail.dart';
-import 'package:trabalho_final/utilities/validPassword.dart';
+import 'package:trabalho_final/utilities/hash_password.dart';
+import 'package:trabalho_final/utilities/valid_email.dart';
+import 'package:trabalho_final/utilities/valid_password.dart';
 
 
 // this test file is to validate the password test the hash

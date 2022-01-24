@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:trabalho_final/routes/homepage.dart';
-import 'package:trabalho_final/utilities/HashPassword.dart';
-import 'package:trabalho_final/utilities/ReadStoredData.dart';
+import 'package:trabalho_final/utilities/hash_password.dart';
+import 'package:trabalho_final/utilities/read_stored_data.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/components/body.dart';
 import 'package:trabalho_final/utilities/global_variables.dart';
-import 'package:trabalho_final/utilities/validEmail.dart';
-import 'package:trabalho_final/utilities/validPassword.dart';
+import 'package:trabalho_final/utilities/valid_email.dart';
+import 'package:trabalho_final/utilities/valid_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
