@@ -1,9 +1,10 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:trabalho_final/Services/GameService.dart';
-import 'package:trabalho_final/models/GameHome.dart';
+import 'package:trabalho_final/Services/game_home_service.dart';
+import 'package:trabalho_final/models/game_home.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
+import 'package:trabalho_final/utilities/api_games_list.dart';
 import 'package:trabalho_final/utilities/global_variables.dart';
 
 class Homepage extends StatefulWidget {
@@ -13,7 +14,7 @@ class Homepage extends StatefulWidget {
 
 class _Homepage extends State<Homepage> {
   @override
-  var gamesInHomePage = <GameHome>[];
+  List gamesInHomePage = <GameHome>[];
   void initState() {
     _getGameHome();
     super.initState();
@@ -42,10 +43,12 @@ class _Homepage extends State<Homepage> {
   }
 
   Future<void> _getGameHome() async {
-    GameService gameService = new GameService();
-    var newGames = await gameService.getGames();
+    GameHomeService gameHomeService = new GameHomeService();
+    ApiGamesList newGames = await gameHomeService.getGames();
     setState(() {
-      gamesInHomePage = newGames;
+      gamesInHomePage = newGames.getGameList;
+      String nextPage = newGames.getNextgame;
+      print(nextPage);
     });
   }
 }
@@ -78,9 +81,9 @@ class GameDisplay extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              idGame = game.gameId;
+              
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return GameDetialsPage();
+                return GameDetialsPage(idGame: game.gameId.toString());
               }));
             },
             child: Text(
