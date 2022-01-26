@@ -5,6 +5,7 @@ import 'package:trabalho_final/Services/game_home_service.dart';
 import 'package:trabalho_final/models/game_home.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/utilities/api_games_list.dart';
+import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/utilities/global_variables.dart';
 
 class Homepage extends StatefulWidget {
@@ -14,20 +15,43 @@ class Homepage extends StatefulWidget {
 
 class _Homepage extends State<Homepage> {
   @override
+  String nextPage = urlRawgDefault;
   List gamesInHomePage = <GameHome>[];
+  final ScrollController _scrollController = ScrollController();
   void initState() {
-    _getGameHome();
+    getListofGames(nextPage);
     super.initState();
+    // check what the scroll is doing
+    _scrollController.addListener(() { 
+      //see if the scroll reage the end of the page
+      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent){
+        print("****************************************++++++++++++++++++++++++++++++++++++++");
+        print("LOADING NEXT PAGE?");
+        print("NEXT URL IS"+nextPage);
+        print("****************************************+++++++++++++++++++++++++++++");
+        getListofGames(nextPage);
+      }
+    });
   }
 
   var _formKey = GlobalKey<FormState>();
   TextEditingController tempController = TextEditingController();
+
+  //stop building the scroll controller
+  @override
+  void dispose(){
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFF242D3C),
         body: GridView.count(
+          controller: _scrollController,
             crossAxisCount: 2, // (number of elements in a row)
             mainAxisSpacing: MediaQuery.of(context).size.height *
                 0.04, // (horizontal space between elements)
@@ -42,12 +66,13 @@ class _Homepage extends State<Homepage> {
             )));
   }
 
-  Future<void> _getGameHome() async {
+  Future<void> getListofGames(urlListOfGames) async {
     GameHomeService gameHomeService = new GameHomeService();
-    ApiGamesList newGames = await gameHomeService.getGames();
+    ApiGamesList ListofGames = await gameHomeService.getGames(urlListOfGames);
     setState(() {
-      gamesInHomePage = newGames.getGameList;
-      String nextPage = newGames.getNextgame;
+      gamesInHomePage = ListofGames.getGameList;
+      nextPage = ListofGames.getNextgame;
+      print("00000000000000000000000000000000000000000000000000");
       print(nextPage);
     });
   }

@@ -5,8 +5,8 @@ import 'package:trabalho_final/utilities/api_games_list.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 
 class GameHomeService {
-  Future getGames() async{
-    final response = await http.get(Uri.parse(urlRawgDefault));
+  Future getGames(urlListOfGames) async{
+    final response = await http.get(Uri.parse(urlListOfGames));
 
     if(response.statusCode == 200){
       List<GameHome> gameHome = jsonDecode(response.body)
