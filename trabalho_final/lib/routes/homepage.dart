@@ -1,12 +1,11 @@
 import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/Services/game_home_service.dart';
 import 'package:trabalho_final/models/game_home.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/utilities/api_games_list.dart';
 import 'package:trabalho_final/utilities/constants.dart';
-import 'package:trabalho_final/utilities/global_variables.dart';
+
 
 class Homepage extends StatefulWidget {
   @override
@@ -66,6 +65,17 @@ class _Homepage extends State<Homepage> {
             )));
   }
 
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+
+// function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
     GameHomeService gameHomeService = new GameHomeService();
     ApiGamesList ListofGames = await gameHomeService.getGames(urlListOfGames);
