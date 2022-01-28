@@ -25,10 +25,6 @@ class _Homepage extends State<Homepage> {
     _scrollController.addListener(() { 
       //see if the scroll reage the end of the page
       if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent){
-        print("****************************************++++++++++++++++++++++++++++++++++++++");
-        print("LOADING NEXT PAGE?");
-        print("NEXT URL IS"+nextPage);
-        print("****************************************+++++++++++++++++++++++++++++");
         getListofGames(nextPage);
       }
     });
@@ -106,8 +102,6 @@ class _Homepage extends State<Homepage> {
     setState(() {
       gamesInHomePage.addAll(gamesListInfo.getGamesList);
       nextPage = gamesListInfo.getNextgame;
-      print("00000000000000000000000000000000000000000000000000");
-      print(nextPage);
       enableLoadingCircle = false;
     });
   }
