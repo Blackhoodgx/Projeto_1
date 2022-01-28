@@ -102,6 +102,7 @@ class _Homepage extends State<Homepage> {
     });
     GameHomeService gameHomeService = new GameHomeService();
     GamesListInfo gamesListInfo = await gameHomeService.getGames(urlListOfGames);
+    await Future.delayed(Duration(seconds: 4));
     setState(() {
       gamesInHomePage.addAll(gamesListInfo.getGamesList);
       nextPage = gamesListInfo.getNextgame;
