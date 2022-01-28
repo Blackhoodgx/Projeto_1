@@ -16,6 +16,7 @@ class _Homepage extends State<Homepage> {
   @override
   String nextPage = urlRawgDefault;
   List gamesInHomePage = <GameHome>[];
+  bool enableLoadingCircle  = true;
   final ScrollController _scrollController = ScrollController();
   void initState() {
     getListofGames(nextPage);
@@ -49,7 +50,8 @@ class _Homepage extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFF242D3C),
-        body: GridView.count(
+        body: Stack(children: [
+          GridView.count(
           controller: _scrollController,
             crossAxisCount: 2, // (number of elements in a row)
             mainAxisSpacing: MediaQuery.of(context).size.height *
@@ -62,7 +64,25 @@ class _Homepage extends State<Homepage> {
                 return GamesListDisplay(
                     game: gamesInHomePage[index], content: context);
               },
-            )));
+            ),
+            ),
+            Positioned(
+              bottom: MediaQuery.of(context).size.height * 0.05,
+              left:(MediaQuery.of(context).size.width * 0.50) - 20,
+              child:Visibility(
+              visible: enableLoadingCircle,
+              child: SizedBox(
+                height: 40,
+                width: 40,
+                child: CircularProgressIndicator(
+                color: corPrimaria,
+              ),
+              ),
+              ),
+              ),
+        ],
+        ),
+            );
   }
 
 //---------------------------------------------------------------------------------------
@@ -77,6 +97,9 @@ class _Homepage extends State<Homepage> {
 
 // function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
+    setState(() {
+      enableLoadingCircle = true;
+    });
     GameHomeService gameHomeService = new GameHomeService();
     GamesListInfo gamesListInfo = await gameHomeService.getGames(urlListOfGames);
     setState(() {
@@ -84,6 +107,7 @@ class _Homepage extends State<Homepage> {
       nextPage = gamesListInfo.getNextgame;
       print("00000000000000000000000000000000000000000000000000");
       print(nextPage);
+      enableLoadingCircle = false;
     });
   }
 }
@@ -112,7 +136,7 @@ class GamesListDisplay extends StatelessWidget {
           Image.network(
             imageUrl,
             width: MediaQuery.of(context).size.width * 0.35,
-            height: MediaQuery.of(context).size.height * .14,
+            height: MediaQuery.of(context).size.height * 0.14,
           ),
           TextButton(
             onPressed: () {
