@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trabalho_final/Services/game_home_service.dart';
 import 'package:trabalho_final/models/game_home.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
-import 'package:trabalho_final/utilities/api_games_list.dart';
+import 'package:trabalho_final/models/api_games_list.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 
 
@@ -59,7 +59,7 @@ class _Homepage extends State<Homepage> {
             children: List.generate(
               gamesInHomePage.length,
               (index) {
-                return GameDisplay(
+                return GamesListDisplay(
                     game: gamesInHomePage[index], content: context);
               },
             )));
@@ -78,18 +78,18 @@ class _Homepage extends State<Homepage> {
 // function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
     GameHomeService gameHomeService = new GameHomeService();
-    ApiGamesList ListofGames = await gameHomeService.getGames(urlListOfGames);
+    GamesListInfo gamesListInfo = await gameHomeService.getGames(urlListOfGames);
     setState(() {
-      gamesInHomePage = ListofGames.getGameList;
-      nextPage = ListofGames.getNextgame;
+      gamesInHomePage.addAll(gamesListInfo.getGamesList);
+      nextPage = gamesListInfo.getNextgame;
       print("00000000000000000000000000000000000000000000000000");
       print(nextPage);
     });
   }
 }
 
-class GameDisplay extends StatelessWidget {
-  const GameDisplay({
+class GamesListDisplay extends StatelessWidget {
+  const GamesListDisplay({
     Key? key,
     required this.game,
     required this.content,
