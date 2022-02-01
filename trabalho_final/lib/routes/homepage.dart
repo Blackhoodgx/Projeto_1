@@ -1,11 +1,10 @@
 import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:trabalho_final/Services/game_home_service.dart';
-import 'package:trabalho_final/models/game_home.dart';
+import 'package:trabalho_final/Services/games_list_service.dart';
+import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/models/api_games_list.dart';
 import 'package:trabalho_final/utilities/constants.dart';
-
 
 class Homepage extends StatefulWidget {
   @override
@@ -15,16 +14,17 @@ class Homepage extends StatefulWidget {
 class _Homepage extends State<Homepage> {
   @override
   String nextPage = urlRawgDefault;
-  List gamesInHomePage = <GameHome>[];
-  bool enableLoadingCircle  = true;
+  List gamesInHomePage = <Game>[];
+  bool enableLoadingCircle = true;
   final ScrollController _scrollController = ScrollController();
   void initState() {
     getListofGames(nextPage);
     super.initState();
     // check what the scroll is doing
-    _scrollController.addListener(() { 
+    _scrollController.addListener(() {
       //see if the scroll reage the end of the page
-      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent){
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent) {
         getListofGames(nextPage);
       }
     });
@@ -35,20 +35,19 @@ class _Homepage extends State<Homepage> {
 
   //stop building the scroll controller
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _scrollController.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF242D3C),
-        body: Stack(children: [
+      backgroundColor: backGroundColor,
+      body: Stack(
+        children: [
           GridView.count(
-          controller: _scrollController,
+            controller: _scrollController,
             crossAxisCount: 2, // (number of elements in a row)
             mainAxisSpacing: MediaQuery.of(context).size.height *
                 0.04, // (horizontal space between elements)
@@ -61,24 +60,24 @@ class _Homepage extends State<Homepage> {
                     game: gamesInHomePage[index], content: context);
               },
             ),
-            ),
-            Positioned(
-              bottom: MediaQuery.of(context).size.height * 0.05,
-              left:(MediaQuery.of(context).size.width * 0.50) - 20,
-              child:Visibility(
+          ),
+          Positioned(
+            bottom: MediaQuery.of(context).size.height * 0.05,
+            left: (MediaQuery.of(context).size.width * 0.50) - 20,
+            child: Visibility(
               visible: enableLoadingCircle,
               child: SizedBox(
                 height: 40,
                 width: 40,
                 child: CircularProgressIndicator(
-                color: corPrimaria,
+                  color: corPrimaria,
+                ),
               ),
-              ),
-              ),
-              ),
+            ),
+          ),
         ],
-        ),
-            );
+      ),
+    );
   }
 
 //---------------------------------------------------------------------------------------
@@ -96,8 +95,9 @@ class _Homepage extends State<Homepage> {
     setState(() {
       enableLoadingCircle = true;
     });
-    GameHomeService gameHomeService = new GameHomeService();
-    GamesListInfo gamesListInfo = await gameHomeService.getGames(urlListOfGames);
+    GamesListService gameslistService = new GamesListService();
+    GamesListInfo gamesListInfo =
+        await gameslistService.getGames(urlListOfGames);
     await Future.delayed(Duration(seconds: 4));
     setState(() {
       gamesInHomePage.addAll(gamesListInfo.getGamesList);
@@ -107,6 +107,16 @@ class _Homepage extends State<Homepage> {
   }
 }
 
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
+
 class GamesListDisplay extends StatelessWidget {
   const GamesListDisplay({
     Key? key,
@@ -114,7 +124,7 @@ class GamesListDisplay extends StatelessWidget {
     required this.content,
   }) : super(key: key);
 
-  final GameHome game;
+  final Game game;
   final BuildContext content;
 
   @override
@@ -135,7 +145,6 @@ class GamesListDisplay extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return GameDetialsPage(idGame: game.gameId.toString());
               }));

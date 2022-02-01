@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho_final/models/search_game_url.dart';
 import 'package:trabalho_final/routes/search_result_page.dart';
 
 class Search extends StatefulWidget {
@@ -24,7 +25,6 @@ class _Search extends State<Search> {
                 vertical: MediaQuery.of(context).size.height * 0.14),
             child: TextField(
               onSubmitted: (value) {
-                print(value);
                 searchGamesResult(value);
               },
               controller: searchTextController,
@@ -58,6 +58,9 @@ class _Search extends State<Search> {
   }
 
   Future <void> searchGamesResult(value) async {
+    SearchGameUrl searchGameUrl = new SearchGameUrl();
+    searchGameUrl.addSearchTermeToUrl = value;
+
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return SearchResult(searchTerme: value);
     }));
