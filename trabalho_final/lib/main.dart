@@ -76,10 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: backGroundColor,
             leading: GestureDetector(
                 onTap: () {
-                  if (Scaffold.of(context).isDrawerOpen) {
-                    Scaffold.of(context).openEndDrawer();
+                  if (_scaffoldKey.currentState!.isDrawerOpen) {
+                    _scaffoldKey.currentState!.openEndDrawer();
                   } else {
-                    Scaffold.of(context).openDrawer();
+                    _scaffoldKey.currentState!.openDrawer();
                   }
                   print("miguel");
                 },
