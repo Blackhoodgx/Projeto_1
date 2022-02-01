@@ -10,10 +10,12 @@ class SearchResult extends StatefulWidget {
   @override
   final String searchTerme;
   const SearchResult({Key? key, required this.searchTerme}) : super(key: key);
-  _SearchResult createState() => new _SearchResult();
+  _SearchResult createState() => new _SearchResult(searchTerme);
 }
 
 class _SearchResult extends State<SearchResult> {
+String terme;
+_SearchResult(this.terme);
   @override
   List gamesInHomePage = <Game>[];
   bool enableLoadingCircle = true;
@@ -21,6 +23,7 @@ class _SearchResult extends State<SearchResult> {
   final ScrollController _scrollController = ScrollController();
   void initState() {
     SearchGameUrl searchGameUrl = new SearchGameUrl();
+    searchGameUrl.addSearchTermeToUrl = terme;
     nextPage = searchGameUrl.getSearchUrl;
     print("inside initState {$nextPage}");
     getListofGames(nextPage);

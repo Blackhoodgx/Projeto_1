@@ -58,9 +58,6 @@ class _Search extends State<Search> {
   }
 
   Future <void> searchGamesResult(value) async {
-    SearchGameUrl searchGameUrl = new SearchGameUrl();
-    searchGameUrl.addSearchTermeToUrl = value;
-
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return SearchResult(searchTerme: value);
     }));
