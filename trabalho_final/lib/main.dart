@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/routes/homepage.dart';
+import 'package:trabalho_final/routes/signup_screen.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/routes/search.dart';
 import "package:trabalho_final/routes/login_screen.dart";
@@ -54,15 +55,116 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         key: _scaffoldKey,
         drawer: Drawer(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10),
+                bottomRight: Radius.circular(10)),
+          ),
+          backgroundColor: backGroundColor,
           child: ListView(
+            itemExtent: 70,
+            shrinkWrap: true,
+            padding: EdgeInsets.all(8),
             children: <Widget>[
+              DrawerHeader(
+                  child: Text(
+                "Daw Dispositivos Moveis",
+                style: TextStyle(color: Colors.white),
+              )),
               ListTile(
-                title: Text("Item 1"),
-                trailing: Icon(Icons.arrow_forward),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 2,
+                    color: corPrimaria,
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                contentPadding: EdgeInsets.zero,
+                leading: IconButton(
+                  icon: Icon(Icons.check_circle),
+                  onPressed: () => print('select'),
+                ),
+                title: Text('TEST', style: TextStyle(color: Colors.white)),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                ),
+                onTap: () => print('teste'),
               ),
               ListTile(
-                title: Text("Item 2"),
-                trailing: Icon(Icons.arrow_forward),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 2,
+                    color: corPrimaria,
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                contentPadding: EdgeInsets.zero,
+                leading: IconButton(
+                  icon: Icon(Icons.check_circle),
+                  onPressed: () => print('select'),
+                ),
+                title: Text('TEST', style: TextStyle(color: Colors.white)),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                ),
+                onTap: () => print('teste'),
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 2,
+                    color: corPrimaria,
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                contentPadding: EdgeInsets.zero,
+                leading: IconButton(
+                  icon: Icon(Icons.check_circle),
+                  onPressed: () => print('select'),
+                ),
+                title: Text('TEST', style: TextStyle(color: Colors.white)),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                ),
+                onTap: () => print('teste'),
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 2,
+                    color: corPrimaria,
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                contentPadding: EdgeInsets.zero,
+                leading: IconButton(
+                  icon: Icon(Icons.check_circle),
+                  onPressed: () => print('select'),
+                ),
+                title: Text('TEST'),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                ),
+                onTap: () => print('teste'),
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 2,
+                    color: corPrimaria,
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                contentPadding: EdgeInsets.zero,
+                leading: IconButton(
+                  icon: Icon(Icons.check_circle),
+                  onPressed: () => print('select'),
+                ),
+                title: Text('TEST', style: TextStyle(color: Colors.white)),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                ),
+                onTap: () => print('teste'),
               ),
             ],
           ),
@@ -106,7 +208,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Login',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
+                      },
                       style: ButtonStyle(
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -121,7 +229,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Registar',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()),
+                        );
+                      },
                       style: ButtonStyle(
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
