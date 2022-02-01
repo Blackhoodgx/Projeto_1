@@ -61,110 +61,116 @@ class _MyHomePageState extends State<MyHomePage> {
                 bottomRight: Radius.circular(10)),
           ),
           backgroundColor: backGroundColor,
-          child: ListView(
-            itemExtent: 70,
-            shrinkWrap: true,
-            padding: EdgeInsets.all(8),
+          child: Column(
             children: <Widget>[
               DrawerHeader(
                   child: Text(
                 "Daw Dispositivos Moveis",
                 style: TextStyle(color: Colors.white),
               )),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 2,
-                    color: corPrimaria,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    MediaQuery.of(context).size.width * 0.03,
+                    MediaQuery.of(context).size.height * 0.01,
+                    MediaQuery.of(context).size.width * 0.03,
+                    0),
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 2,
+                      color: corPrimaria,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  borderRadius: BorderRadius.circular(20.0),
+                  contentPadding: EdgeInsets.zero,
+                  leading: IconButton(
+                    icon: Icon(Icons.check_circle),
+                    onPressed: () => print('select'),
+                  ),
+                  title: Text('TEST', style: TextStyle(color: Colors.white)),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                  ),
+                  onTap: () => print('teste'),
                 ),
-                contentPadding: EdgeInsets.zero,
-                leading: IconButton(
-                  icon: Icon(Icons.check_circle),
-                  onPressed: () => print('select'),
-                ),
-                title: Text('TEST', style: TextStyle(color: Colors.white)),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                ),
-                onTap: () => print('teste'),
               ),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 2,
-                    color: corPrimaria,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    MediaQuery.of(context).size.width * 0.03,
+                    MediaQuery.of(context).size.height * 0.01,
+                    MediaQuery.of(context).size.width * 0.03,
+                    0),
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 2,
+                      color: corPrimaria,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  borderRadius: BorderRadius.circular(20.0),
+                  contentPadding: EdgeInsets.zero,
+                  leading: IconButton(
+                    icon: Icon(Icons.check_circle),
+                    onPressed: () => print('select'),
+                  ),
+                  title: Text('TEST', style: TextStyle(color: Colors.white)),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                  ),
+                  onTap: () => print('teste'),
                 ),
-                contentPadding: EdgeInsets.zero,
-                leading: IconButton(
-                  icon: Icon(Icons.check_circle),
-                  onPressed: () => print('select'),
-                ),
-                title: Text('TEST', style: TextStyle(color: Colors.white)),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                ),
-                onTap: () => print('teste'),
               ),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 2,
-                    color: corPrimaria,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    MediaQuery.of(context).size.width * 0.03,
+                    MediaQuery.of(context).size.height * 0.01,
+                    MediaQuery.of(context).size.width * 0.03,
+                    0),
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 2,
+                      color: corPrimaria,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  borderRadius: BorderRadius.circular(20.0),
+                  contentPadding: EdgeInsets.zero,
+                  leading: IconButton(
+                    icon: Icon(Icons.check_circle),
+                    onPressed: () => print('select'),
+                  ),
+                  title: Text('TEST', style: TextStyle(color: Colors.white)),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                  ),
+                  onTap: () => print('teste'),
                 ),
-                contentPadding: EdgeInsets.zero,
-                leading: IconButton(
-                  icon: Icon(Icons.check_circle),
-                  onPressed: () => print('select'),
-                ),
-                title: Text('TEST', style: TextStyle(color: Colors.white)),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                ),
-                onTap: () => print('teste'),
               ),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 2,
-                    color: corPrimaria,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    MediaQuery.of(context).size.width * 0.03,
+                    MediaQuery.of(context).size.height * 0.01,
+                    MediaQuery.of(context).size.width * 0.03,
+                    0),
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 2,
+                      color: corPrimaria,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                contentPadding: EdgeInsets.zero,
-                leading: IconButton(
-                  icon: Icon(Icons.check_circle),
-                  onPressed: () => print('select'),
-                ),
-                title: Text('TEST'),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                ),
-                onTap: () => print('teste'),
-              ),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 2,
-                    color: corPrimaria,
+                  contentPadding: EdgeInsets.zero,
+                  leading: IconButton(
+                    icon: Icon(Icons.check_circle),
+                    onPressed: () => print('select'),
                   ),
-                  borderRadius: BorderRadius.circular(20.0),
+                  title: Text('TEST', style: TextStyle(color: Colors.white)),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                  ),
+                  onTap: () => print('teste'),
                 ),
-                contentPadding: EdgeInsets.zero,
-                leading: IconButton(
-                  icon: Icon(Icons.check_circle),
-                  onPressed: () => print('select'),
-                ),
-                title: Text('TEST', style: TextStyle(color: Colors.white)),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                ),
-                onTap: () => print('teste'),
               ),
             ],
           ),
