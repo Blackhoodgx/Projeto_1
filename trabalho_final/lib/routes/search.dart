@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/models/search_game_url.dart';
+import 'package:trabalho_final/routes/developer_page.dart';
 import 'package:trabalho_final/routes/search_result_page.dart';
 
 class Search extends StatefulWidget {
@@ -59,7 +60,8 @@ class _Search extends State<Search> {
 
   Future <void> searchGamesResult(value) async {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return SearchResult(searchTerme: value);
+      return DeveloperPage();
+      // SearchResult(searchTerme: value);
     }));
     
   }

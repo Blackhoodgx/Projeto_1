@@ -13,9 +13,9 @@ class Game{
   factory Game.fromJson(Map<String, dynamic> json){
 
     return Game(
-      gameTitle: json['name'],
-      gameBackgroundImage: json['background_image'],
-      gameId:json['id'],
+      gameTitle: json['name'] ?? '',
+      gameBackgroundImage: json['background_image'] ?? '',
+      gameId:json['id'] ?? '',
     );
   }
 

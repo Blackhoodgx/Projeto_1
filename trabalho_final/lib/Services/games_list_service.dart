@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:trabalho_final/models/game.dart';
-import 'package:trabalho_final/models/api_games_list.dart';
+import 'package:trabalho_final/models/games_list_info.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 
 class GamesListService {
@@ -18,7 +18,7 @@ class GamesListService {
 
       return gamesListInfo;
     }else{
-      throw Exception("unenable to load games");
+      throw Exception("unable to load games");
     }
   }
 }

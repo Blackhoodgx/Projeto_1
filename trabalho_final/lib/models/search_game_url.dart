@@ -5,7 +5,7 @@ class SearchGameUrl {
   SearchGameUrl();
 
   void set addSearchTermeToUrl(String searchTerme){
-    searchUrl = '{$urlRawgDefault}&search={$searchTerme}';
+    searchUrl = '$urlRawgDefault&search=$searchTerme';
   }
 
   String get getSearchUrl => this.searchUrl;
