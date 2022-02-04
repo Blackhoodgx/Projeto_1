@@ -1,38 +1,45 @@
-import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:trabalho_final/Services/games_list_service.dart';
-import 'package:trabalho_final/models/game.dart';
-import 'package:trabalho_final/routes/game_details_page.dart';
-import 'package:trabalho_final/models/games_list_info.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:trabalho_final/Services/developer_list_service.dart';
+import 'package:trabalho_final/models/developer.dart';
+import 'package:trabalho_final/models/developer_list_info.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 
-class Homepage extends StatefulWidget {
+class DeveloperPage extends StatefulWidget {
   @override
-  _Homepage createState() => new _Homepage();
+  _DeveloperPage createState() => new _DeveloperPage();
 }
 
-class _Homepage extends State<Homepage> {
+class _DeveloperPage extends State<DeveloperPage> {
   @override
-  String nextPage = urlRawgDefault;
-  List gamesInHomePage = <Game>[];
+  String nextPage = urlRawgDeveloperDefault;
+  List developersList = <Developer>[];
   bool enableLoadingCircle = true;
   final ScrollController _scrollController = ScrollController();
   void initState() {
-    getListofGames(nextPage);
+    getListofDevelopers(nextPage);
     super.initState();
     // check what the scroll is doing
     _scrollController.addListener(() {
       //see if the scroll reage the end of the page
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent) {
-        getListofGames(nextPage);
+        getListofDevelopers(nextPage);
       }
     });
   }
 
-  var _formKey = GlobalKey<FormState>();
+    var _formKey = GlobalKey<FormState>();
   TextEditingController tempController = TextEditingController();
+
+  //stop building the scroll controller
   @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backGroundColor,
@@ -46,10 +53,10 @@ class _Homepage extends State<Homepage> {
             crossAxisSpacing: MediaQuery.of(context).size.width *
                 0.11, // (vertical space between elements)
             children: List.generate(
-              gamesInHomePage.length,
+              developersList.length,
               (index) {
-                return GamesListDisplay(
-                    game: gamesInHomePage[index], content: context);
+                return DeveloperListDisplay(
+                    developer: developersList[index], context: context);
               },
             ),
           ),
@@ -72,7 +79,7 @@ class _Homepage extends State<Homepage> {
     );
   }
 
-//---------------------------------------------------------------------------------------
+  //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
@@ -83,18 +90,18 @@ class _Homepage extends State<Homepage> {
 //---------------------------------------------------------------------------------------
 
 // function to use the api, the function recive the url that it will use
-  Future<void> getListofGames(urlListOfGames) async {
+  Future<void> getListofDevelopers(urlListOfDevelopers) async {
     setState(() {
       enableLoadingCircle = true;
     });
-    GamesListService gameslistService = new GamesListService();
-    GamesListInfo gamesListInfo =
-        await gameslistService.getGames(urlListOfGames);
-    await Future.delayed(Duration(seconds: 4));
-    setState(() {
-      gamesInHomePage.addAll(gamesListInfo.getGamesList);
-      nextPage = gamesListInfo.getNextgame;
-      enableLoadingCircle = false;
+    DeveloperListService developerListService = new DeveloperListService();
+    DeveloperListInfo developerListInfo =
+        await developerListService.getDevelopers(urlListOfDevelopers);
+        await Future.delayed(Duration(seconds: 4));
+        setState(() {
+          developersList.addAll(developerListInfo.getDeveloperList);
+          nextPage = developerListInfo.getNextGame;
+          enableLoadingCircle = false;
     });
   }
 }
@@ -109,23 +116,23 @@ class _Homepage extends State<Homepage> {
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 
-class GamesListDisplay extends StatelessWidget {
-  const GamesListDisplay({
-    Key? key,
-    required this.game,
-    required this.content,
+class DeveloperListDisplay extends StatelessWidget {
+  const DeveloperListDisplay({
+  Key? key,
+    required this.developer,
+    required this.context,
   }) : super(key: key);
 
-  final Game game;
-  final BuildContext content;
+  final Developer developer;
+  final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
     String imageUrl;
-    if (game.gameBackgroundImage.isEmpty) {
+    if (developer.developerBackGroundImage.isEmpty) {
       imageUrl = 'assets/images/image_not_found.png';
     } else {
-      imageUrl = game.gameBackgroundImage;
+      imageUrl = developer.developerBackGroundImage;
     }
     return Container(
       child: Column(
@@ -135,14 +142,8 @@ class GamesListDisplay extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.35,
             height: MediaQuery.of(context).size.height * 0.14,
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return GameDetialsPage(idGame: game.gameId.toString());
-              }));
-            },
-            child: Text(
-              game.gameTitle,
+          Text(
+              developer.developerName,
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: 'Poppins',
@@ -150,10 +151,12 @@ class GamesListDisplay extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-          ),
           //Text(game.gameId.toString()),
         ],
       ),
     );
   }
 }
+
+
+

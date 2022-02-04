@@ -1,23 +1,30 @@
-import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/Services/games_list_service.dart';
-import 'package:trabalho_final/models/game.dart';
-import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/models/games_list_info.dart';
+import 'package:trabalho_final/models/game.dart';
+import 'package:trabalho_final/models/search_game_url.dart';
+import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 
-class Homepage extends StatefulWidget {
+class SearchResult extends StatefulWidget {
   @override
-  _Homepage createState() => new _Homepage();
+  final String searchTerme;
+  const SearchResult({Key? key, required this.searchTerme}) : super(key: key);
+  _SearchResult createState() => new _SearchResult(searchTerme);
 }
 
-class _Homepage extends State<Homepage> {
+class _SearchResult extends State<SearchResult> {
+String terme;
+_SearchResult(this.terme);
   @override
-  String nextPage = urlRawgDefault;
   List gamesInHomePage = <Game>[];
   bool enableLoadingCircle = true;
+  String? nextPage = null;
   final ScrollController _scrollController = ScrollController();
   void initState() {
+    SearchGameUrl searchGameUrl = new SearchGameUrl();
+    searchGameUrl.addSearchTermeToUrl = terme;
+    nextPage = searchGameUrl.getSearchUrl;
     getListofGames(nextPage);
     super.initState();
     // check what the scroll is doing
@@ -30,11 +37,17 @@ class _Homepage extends State<Homepage> {
     });
   }
 
-  var _formKey = GlobalKey<FormState>();
-  TextEditingController tempController = TextEditingController();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext) {
+    String searchTerme = widget.searchTerme;
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded),
+          color: corPrimaria,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       backgroundColor: backGroundColor,
       body: Stack(
         children: [
@@ -71,7 +84,6 @@ class _Homepage extends State<Homepage> {
       ),
     );
   }
-
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
@@ -82,7 +94,7 @@ class _Homepage extends State<Homepage> {
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 
-// function to use the api, the function recive the url that it will use
+  // function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
     setState(() {
       enableLoadingCircle = true;

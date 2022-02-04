@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho_final/models/search_game_url.dart';
+import 'package:trabalho_final/routes/developer_page.dart';
+import 'package:trabalho_final/routes/search_result_page.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -22,11 +25,14 @@ class _Search extends State<Search> {
                 horizontal: MediaQuery.of(context).size.width * 0.07,
                 vertical: MediaQuery.of(context).size.height * 0.14),
             child: TextField(
-              controller:  searchTextController,
+              onSubmitted: (value) {
+                searchGamesResult(value);
+              },
+              controller: searchTextController,
               decoration: InputDecoration(
                 fillColor: Color.fromRGBO(36, 45, 60, 1.0),
                 filled: true,
-                border:OutlineInputBorder(
+                border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey, width: 1),
                   borderRadius: BorderRadius.circular(50),
                 ),
@@ -51,4 +57,13 @@ class _Search extends State<Search> {
           ),
         ]));
   }
+
+  Future <void> searchGamesResult(value) async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return DeveloperPage();
+      // SearchResult(searchTerme: value);
+    }));
+    
+  }
+
 }
