@@ -19,7 +19,7 @@ class PublisherListService {
 
       return publisherListInfo;
     } else {
-      throw Exception('unable to load developer');
+      throw Exception('unable to load publisher');
     }
   }
 }

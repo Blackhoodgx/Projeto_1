@@ -90,13 +90,13 @@ class _PublisherPage extends State<PublisherPage> {
     setState(() {
       enableLoadingCircle = true;
     });
-    PublisherListService developerListService = new PublisherListService();
-    PublisherListInfo developerListInfo =
-        await developerListService.getPublisher(urlListOfPublishers);
+    PublisherListService publisherListService = new PublisherListService();
+    PublisherListInfo publisherListInfo =
+        await publisherListService.getPublisher(urlListOfPublishers);
     await Future.delayed(Duration(seconds: 4));
     setState(() {
-      publisherList.addAll(developerListInfo.getPublisherList);
-      nextPage = developerListInfo.getNextGame;
+      publisherList.addAll(publisherListInfo.getPublisherList);
+      nextPage = publisherListInfo.getNextGame;
       enableLoadingCircle = false;
     });
   }
