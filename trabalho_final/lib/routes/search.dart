@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trabalho_final/models/search_game_url.dart';
+import 'package:trabalho_final/utilities/search_game_url.dart';
 import 'package:trabalho_final/routes/developer_page.dart';
 import 'package:trabalho_final/routes/search_result_page.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trabalho_final/Services/games_list_service.dart';
 import 'package:trabalho_final/models/games_list_info.dart';
 import 'package:trabalho_final/models/game.dart';
-import 'package:trabalho_final/models/search_game_url.dart';
+import 'package:trabalho_final/utilities/search_game_url.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/widgets/games_list_display.dart';
