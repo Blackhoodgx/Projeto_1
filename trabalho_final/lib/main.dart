@@ -5,6 +5,7 @@ import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/routes/search.dart';
 import "package:trabalho_final/routes/login_screen.dart";
 import 'package:trabalho_final/routes/developer_page.dart';
+import 'package:trabalho_final/routes/publisher_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -120,11 +121,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icon(Icons.check_circle),
                     onPressed: () => print('select'),
                   ),
-                  title: Text('TEST', style: TextStyle(color: Colors.white)),
+                  title:
+                      Text('Publishers', style: TextStyle(color: Colors.white)),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
                   ),
-                  onTap: () => print('teste'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PublisherPage()),
+                    );
+                  },
                 ),
               ),
               Container(
