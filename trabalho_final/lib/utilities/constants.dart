@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const corPrimaria = Color.fromRGBO(78, 185, 71, 1.0);
+const darkPrimalGreen = Color.fromRGBO(18, 44, 16, 1.0);
 const backGroundColor = Color.fromRGBO(36, 45, 60, 1.0);
 // rawg api key, it ca be swup to a new key if necessary.
 const apikey = 'key=53bb6c93b0194ef88499311cb89f58e8';
