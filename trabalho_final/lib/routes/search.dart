@@ -67,7 +67,6 @@ class _Search extends State<Search> {
   Future<void> searchGamesResult(value) async {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return SearchResult(searchTerme: value);
-      // DeveloperPage();
     }));
   }
 }

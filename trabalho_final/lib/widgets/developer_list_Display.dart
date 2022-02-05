@@ -21,6 +21,7 @@ class DeveloperListDisplay extends StatelessWidget {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.70,
+                height: 30,
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(50, 71, 104, 1.0),
                   border: Border.all(
@@ -29,20 +30,24 @@ class DeveloperListDisplay extends StatelessWidget {
                   ),
                 ),
                 child: Center(
-                  child: Text(
-                    developer.developerName,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Text(
+                      developer.developerName,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.20,
+                height: 30,
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(50, 71, 104, 1.0),
                   border: Border.all(
@@ -51,14 +56,17 @@ class DeveloperListDisplay extends StatelessWidget {
                   ),
                 ),
                 child: Center(
-                  child: Text(
-                    developer.developerNumberOfGames.toString(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Text(
+                      developer.developerNumberOfGames.toString(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
