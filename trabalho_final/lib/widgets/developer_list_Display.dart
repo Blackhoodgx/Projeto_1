@@ -21,7 +21,7 @@ class DeveloperListDisplay extends StatelessWidget {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.70,
-                height: 30,
+                height: 35,
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(50, 71, 104, 1.0),
                   border: Border.all(
@@ -47,7 +47,7 @@ class DeveloperListDisplay extends StatelessWidget {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.20,
-                height: 30,
+                height: 35,
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(50, 71, 104, 1.0),
                   border: Border.all(
