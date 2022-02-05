@@ -1,17 +1,17 @@
 class Developer {
   final String developerName;
-  final String developerBackGroundImage;
+  final int developerNumberOfGames;
 
   Developer({
     required this.developerName,
-    required this.developerBackGroundImage,
+    required this.developerNumberOfGames,
   });
 
   factory Developer.fromJson(Map<String, dynamic> json){
 
     return Developer(
       developerName: json['name'] ?? '', 
-      developerBackGroundImage: json['image_background'] ?? '', 
+      developerNumberOfGames: json['games_count'] ?? '', 
       );
   }
 

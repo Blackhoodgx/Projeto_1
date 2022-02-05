@@ -4,6 +4,7 @@ import 'package:trabalho_final/Services/developer_list_service.dart';
 import 'package:trabalho_final/models/developer.dart';
 import 'package:trabalho_final/models/developer_list_info.dart';
 import 'package:trabalho_final/utilities/constants.dart';
+import 'package:trabalho_final/widgets/developer_list_Display.dart';
 
 class DeveloperPage extends StatefulWidget {
   @override
@@ -45,13 +46,8 @@ class _DeveloperPage extends State<DeveloperPage> {
       backgroundColor: backGroundColor,
       body: Stack(
         children: [
-          GridView.count(
+          ListView(
             controller: _scrollController,
-            crossAxisCount: 2, // (number of elements in a row)
-            mainAxisSpacing: MediaQuery.of(context).size.height *
-                0.04, // (horizontal space between elements)
-            crossAxisSpacing: MediaQuery.of(context).size.width *
-                0.11, // (vertical space between elements)
             children: List.generate(
               developersList.length,
               (index) {
@@ -79,7 +75,7 @@ class _DeveloperPage extends State<DeveloperPage> {
     );
   }
 
-  //---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------
@@ -105,58 +101,3 @@ class _DeveloperPage extends State<DeveloperPage> {
     });
   }
 }
-
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------
-
-class DeveloperListDisplay extends StatelessWidget {
-  const DeveloperListDisplay({
-  Key? key,
-    required this.developer,
-    required this.context,
-  }) : super(key: key);
-
-  final Developer developer;
-  final BuildContext context;
-
-  @override
-  Widget build(BuildContext context) {
-    String imageUrl;
-    if (developer.developerBackGroundImage.isEmpty) {
-      imageUrl = 'assets/images/image_not_found.png';
-    } else {
-      imageUrl = developer.developerBackGroundImage;
-    }
-    return Container(
-      child: Column(
-        children: [
-          Image.network(
-            imageUrl,
-            width: MediaQuery.of(context).size.width * 0.35,
-            height: MediaQuery.of(context).size.height * 0.14,
-          ),
-          Text(
-              developer.developerName,
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-                color: Colors.white,
-              ),
-            ),
-          //Text(game.gameId.toString()),
-        ],
-      ),
-    );
-  }
-}
-
-
-
