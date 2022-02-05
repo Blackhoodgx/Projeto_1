@@ -33,14 +33,6 @@ class _Homepage extends State<Homepage> {
 
   var _formKey = GlobalKey<FormState>();
   TextEditingController tempController = TextEditingController();
-
-  //stop building the scroll controller
-  @override
-  void dispose() {
-    super.dispose();
-    _scrollController.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
