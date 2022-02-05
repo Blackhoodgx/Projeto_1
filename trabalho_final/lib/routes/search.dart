@@ -18,7 +18,7 @@ class _Search extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(50, 71, 104, 1.0), //Color(0xFF242D3C),
+        backgroundColor: Color.fromRGBO(50, 71, 104, 1.0),
         body: ListView(children: [
           Padding(
             padding: EdgeInsets.symmetric(
@@ -48,22 +48,25 @@ class _Search extends State<Search> {
                   ),
                 ),
                 hintText: textFieldHintSeach,
+                // style of the placeholder text, it does not affect the style of the text the user is typing
                 hintStyle: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                 ),
+              ),
+              // style of the text the user is typing, it only affect what the user is typing and doesn't affect the placeholder text
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
               ),
             ),
           ),
         ]));
   }
 
-  Future <void> searchGamesResult(value) async {
+  Future<void> searchGamesResult(value) async {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return DeveloperPage();
-      // SearchResult(searchTerme: value);
+      return SearchResult(searchTerme: value);
     }));
-    
   }
-
 }
