@@ -10,5 +10,4 @@ class SearchGameUrl {
 
   String get getSearchUrl => this.searchUrl;
 
-
 }

@@ -31,9 +31,9 @@ class GamesListDisplay extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return GameDetialsPage(idGame: game.gameId.toString());
-              }));
+              //Navigator.push(context, MaterialPageRoute(builder: (context) {
+                //return GameDetialsPage(idGame: game.gameId.toString());
+              //}));
             },
             child: Text(
               game.gameTitle,
