@@ -1,3 +1,4 @@
+// this class is to save the list of developer for the api and the nextpage for the next list
 class DeveloperListInfo {
   List developerList;
   String nextPage;

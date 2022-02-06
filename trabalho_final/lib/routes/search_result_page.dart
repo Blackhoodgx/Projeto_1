@@ -43,6 +43,7 @@ _SearchResult(this.terme);
     String searchTerme = widget.searchTerme;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: backGroundColor,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded),
           color: corPrimaria,

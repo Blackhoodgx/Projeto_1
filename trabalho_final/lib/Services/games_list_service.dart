@@ -14,6 +14,7 @@ class GamesListService {
 
       String nextPage = jsonDecode(response.body)['next'];
 
+      // gameListInfo serve to save the gamesList info and the url to the next page do to the info be in different leves
       GamesListInfo gamesListInfo = new GamesListInfo(gamesList: games, nextPage: nextPage);
 
       return gamesListInfo;

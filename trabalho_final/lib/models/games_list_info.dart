@@ -1,3 +1,4 @@
+// this class is to save the list of games for the api and the nextpage for the next list
 class GamesListInfo {
   List gamesList;
   String nextPage;

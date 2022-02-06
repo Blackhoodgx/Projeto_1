@@ -30,7 +30,7 @@ class _DeveloperPage extends State<DeveloperPage> {
     });
   }
 
-    var _formKey = GlobalKey<FormState>();
+  var _formKey = GlobalKey<FormState>();
   TextEditingController tempController = TextEditingController();
 
   //stop building the scroll controller
@@ -40,10 +40,18 @@ class _DeveloperPage extends State<DeveloperPage> {
     _scrollController.dispose();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backGroundColor,
+      appBar: AppBar(
+        backgroundColor: backGroundColor,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded),
+          color: corPrimaria,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Stack(
         children: [
           ListView(
@@ -93,11 +101,11 @@ class _DeveloperPage extends State<DeveloperPage> {
     DeveloperListService developerListService = new DeveloperListService();
     DeveloperListInfo developerListInfo =
         await developerListService.getDevelopers(urlListOfDevelopers);
-        await Future.delayed(Duration(seconds: 4));
-        setState(() {
-          developersList.addAll(developerListInfo.getDeveloperList);
-          nextPage = developerListInfo.getNextGame;
-          enableLoadingCircle = false;
+    await Future.delayed(Duration(seconds: 4));
+    setState(() {
+      developersList.addAll(developerListInfo.getDeveloperList);
+      nextPage = developerListInfo.getNextGame;
+      enableLoadingCircle = false;
     });
   }
 }

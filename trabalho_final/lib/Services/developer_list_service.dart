@@ -14,6 +14,7 @@ class DeveloperListService {
 
       String nextPage = jsonDecode(response.body)['next'];
 
+      // DeveloperListInfo serve to save the gamesList info and the url to the next page do to the info be in different leves
       DeveloperListInfo developerListInfo = new DeveloperListInfo(developerList: developers, nextPage: nextPage);
     
     return developerListInfo;

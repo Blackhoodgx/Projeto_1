@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
 
+// it use in the home_page and search_result_page do to the games infomation in its page by the same
 class GamesListDisplay extends StatelessWidget {
   const GamesListDisplay({
     Key? key,
@@ -10,6 +11,7 @@ class GamesListDisplay extends StatelessWidget {
     required this.content,
   }) : super(key: key);
 
+  // the object game contain the game informantion
   final Game game;
   final BuildContext content;
 
