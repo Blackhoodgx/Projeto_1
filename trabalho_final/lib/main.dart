@@ -77,13 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     MediaQuery.of(context).size.width * 0.03,
                     0),
                 child: ListTile(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 2,
-                      color: corPrimaria,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
                   contentPadding: EdgeInsets.zero,
                   leading: IconButton(
                     icon: Icon(Icons.check_circle),
@@ -109,13 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     MediaQuery.of(context).size.width * 0.03,
                     0),
                 child: ListTile(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 2,
-                      color: corPrimaria,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
                   contentPadding: EdgeInsets.zero,
                   leading: IconButton(
                     icon: Icon(Icons.check_circle),
@@ -134,99 +120,50 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width * 0.03,
-                    MediaQuery.of(context).size.height * 0.01,
-                    MediaQuery.of(context).size.width * 0.03,
-                    0),
-                child: ListTile(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 2,
-                      color: corPrimaria,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  contentPadding: EdgeInsets.zero,
-                  leading: IconButton(
-                    icon: Icon(Icons.check_circle),
-                    onPressed: () => print('select'),
-                  ),
-                  title: Text('TEST', style: TextStyle(color: Colors.white)),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                  ),
-                  onTap: () => print('teste'),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width * 0.03,
-                    MediaQuery.of(context).size.height * 0.01,
-                    MediaQuery.of(context).size.width * 0.03,
-                    0),
-                child: ListTile(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 2,
-                      color: corPrimaria,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  contentPadding: EdgeInsets.zero,
-                  leading: IconButton(
-                    icon: Icon(Icons.check_circle),
-                    onPressed: () => print('select'),
-                  ),
-                  title: Text('TEST', style: TextStyle(color: Colors.white)),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                  ),
-                  onTap: () => print('teste'),
-                ),
-              ),
             ],
           ),
         ),
         appBar: AppBar(
             toolbarHeight: 85,
-            title: Text(
-              "DAW APP",
-              style: TextStyle(color: corPrimaria),
-            ),
             backgroundColor: backGroundColor,
             leading: GestureDetector(
-                onTap: () {
-                  if (_scaffoldKey.currentState!.isDrawerOpen) {
-                    _scaffoldKey.currentState!.openEndDrawer();
-                  } else {
-                    _scaffoldKey.currentState!.openDrawer();
-                  }
-                  print("miguel");
-                },
-                child: Center(
+              onTap: () {
+                if (_scaffoldKey.currentState!.isDrawerOpen) {
+                  _scaffoldKey.currentState!.openEndDrawer();
+                } else {
+                  _scaffoldKey.currentState!.openDrawer();
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
                     child: Container(
-                  width: MediaQuery.of(context).size.height * 0.05,
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(color: corPrimaria, width: 2)),
-                  child: Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                      width: MediaQuery.of(context).size.height * 0.05,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      margin: EdgeInsets.fromLTRB(7, 5, 5, 5),
+                      padding: EdgeInsets.all(2),
+                      child: Icon(
+                        Icons.menu,
+                        size: MediaQuery.of(context).size.height * 0.05,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ))),
+                ],
+              ),
+            ),
             actions: <Widget>[
               Padding(
-                padding: EdgeInsets.only(right: 20.0),
+                padding: EdgeInsets.only(right: 5.0),
                 child: ButtonBar(children: [
                   TextButton(
                       child: Text(
-                        'Login',
-                        style: TextStyle(color: Colors.white),
+                        'LOGIN',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -236,35 +173,38 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                       },
                       style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(corPrimaria),
+                        fixedSize: MaterialStateProperty.all(Size(161, 39)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: corPrimaria, width: 2.0),
+                            side: BorderSide.none,
                           ),
                         ),
                       )),
-                  TextButton(
-                      child: Text(
-                        'Registar',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpScreen()),
-                        );
-                      },
-                      style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: corPrimaria, width: 2.0),
-                          ),
-                        ),
-                      ))
+                  // TextButton(
+                  //     child: Text(
+                  //       'Registar',
+                  //       style: TextStyle(color: Colors.white),
+                  //     ),
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => SignUpScreen()),
+                  //       );
+                  //     },
+                  //     style: ButtonStyle(
+                  //       fixedSize: MaterialStateProperty.all(Size(161, 39)),
+                  //       shape:
+                  //           MaterialStateProperty.all<RoundedRectangleBorder>(
+                  //         RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(20.0),
+                  //           side: BorderSide(color: corPrimaria, width: 2.0),
+                  //         ),
+                  //       ),
+                  //     ))
                 ]),
               ),
             ]),
@@ -272,25 +212,27 @@ class _MyHomePageState extends State<MyHomePage> {
           child: _pages.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xFF242D3C),
+          selectedIconTheme: IconThemeData(color: corPrimaria),
+          unselectedItemColor: lighterWhite,
+          backgroundColor: colorNavBar,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
-                color: Color(0xFF4EB947),
+                color: lighterWhite,
               ),
               label: 'Homepage',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.search,
-                color: Color(0xFF4EB947),
+                color: lighterWhite,
               ),
               label: 'Search',
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue[0xFF4EB947],
+          selectedItemColor: corPrimaria,
           onTap: _onItemTapped,
         ));
   }
