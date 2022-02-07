@@ -23,32 +23,78 @@ class GamesListDisplay extends StatelessWidget {
     } else {
       imageUrl = game.gameBackgroundImage;
     }
-    return Container(
-      child: Column(
-        children: [
-          Image.network(
-            imageUrl,
-            width: MediaQuery.of(context).size.width * 0.35,
-            height: MediaQuery.of(context).size.height * 0.14,
-          ),
-          TextButton(
-            onPressed: () {
-              //Navigator.push(context, MaterialPageRoute(builder: (context) {
-                //return GameDetialsPage(idGame: game.gameId.toString());
-              //}));
-            },
-            child: Text(
-              game.gameTitle,
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-                color: Colors.white,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.width * 0.4,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.network(
+                imageUrl,
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.width * 0.4,
+                fit: BoxFit.fitHeight,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          child: Text(
+            game.gameTitle,
+            style: TextStyle(
+              fontSize: 11.0,
+              color: Color.fromRGBO(130, 130, 130, 1.0),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w200,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          child: Text(
+            '4.5',
+            style: TextStyle(
+              fontSize: 12.0,
+              color: lighterWhite,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w200,
+            ),
+          ),
+        ),
+      ],
     );
+    // return Container(
+    //   child: Column(
+    //     children: [
+    //       Image.network(
+    //         imageUrl,
+    //         width: MediaQuery.of(context).size.width * 0.35,
+    //         height: MediaQuery.of(context).size.height * 0.14,
+    //       ),
+    //       TextButton(
+    //         onPressed: () {
+    //           //Navigator.push(context, MaterialPageRoute(builder: (context) {
+    //             //return GameDetialsPage(idGame: game.gameId.toString());
+    //           //}));
+    //         },
+    //         child: Text(
+    //           game.gameTitle,
+    //           style: TextStyle(
+    //             fontSize: 20,
+    //             fontFamily: 'Poppins',
+    //             fontWeight: FontWeight.w400,
+    //             color: Colors.white,
+    //           ),
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }

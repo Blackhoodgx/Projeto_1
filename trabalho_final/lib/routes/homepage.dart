@@ -35,23 +35,29 @@ class _Homepage extends State<Homepage> {
   TextEditingController tempController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: backGroundColor,
       body: Stack(
         children: [
-          GridView.count(
-            controller: _scrollController,
-            crossAxisCount: 2, // (number of elements in a row)
-            mainAxisSpacing: MediaQuery.of(context).size.height *
-                0.04, // (horizontal space between elements)
-            crossAxisSpacing: MediaQuery.of(context).size.width *
-                0.11, // (vertical space between elements)
-            children: List.generate(
-              gamesInHomePage.length,
-              (index) {
-                return GamesListDisplay(
-                    game: gamesInHomePage[index], content: context);
-              },
+          Container(
+            margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.067),
+            child: GridView.count(
+              controller: _scrollController,
+              crossAxisCount: 2, // (number of elements in a row)
+              childAspectRatio: .75,
+              mainAxisSpacing: MediaQuery.of(context).size.width * 0.067,
+              crossAxisSpacing: MediaQuery.of(context).size.width * 0.067,
+              //     0.04, // (horizontal space between elements)
+              // crossAxisSpacing: MediaQuery.of(context).size.width *
+              //     0.5, // (vertical space between elements)
+              children: List.generate(
+                gamesInHomePage.length,
+                (index) {
+                  return GamesListDisplay(
+                      game: gamesInHomePage[index], content: context);
+                },
+              ),
             ),
           ),
           Positioned(

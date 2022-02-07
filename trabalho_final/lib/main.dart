@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho_final/routes/game_details_page.dart';
 import 'package:trabalho_final/routes/homepage.dart';
 import 'package:trabalho_final/routes/signup_screen.dart';
 import 'package:trabalho_final/utilities/constants.dart';
@@ -6,6 +7,7 @@ import 'package:trabalho_final/routes/search.dart';
 import "package:trabalho_final/routes/login_screen.dart";
 import 'package:trabalho_final/routes/developer_page.dart';
 import 'package:trabalho_final/routes/publisher_page.dart';
+import 'package:trabalho_final/routes/game_details_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         key: _scaffoldKey,
         drawer: Drawer(
           shape: const RoundedRectangleBorder(
@@ -124,40 +127,26 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         appBar: AppBar(
-            toolbarHeight: 85,
-            backgroundColor: backGroundColor,
-            leading: GestureDetector(
-              onTap: () {
-                if (_scaffoldKey.currentState!.isDrawerOpen) {
-                  _scaffoldKey.currentState!.openEndDrawer();
-                } else {
-                  _scaffoldKey.currentState!.openDrawer();
-                }
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Container(
-                      width: MediaQuery.of(context).size.height * 0.05,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      margin: EdgeInsets.fromLTRB(7, 5, 5, 5),
-                      padding: EdgeInsets.all(2),
-                      child: Icon(
-                        Icons.menu,
-                        size: MediaQuery.of(context).size.height * 0.05,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(right: 5.0),
-                child: ButtonBar(children: [
-                  TextButton(
+          toolbarHeight: 70,
+          backgroundColor: backGroundColor,
+          title: GestureDetector(
+            onTap: () {
+              if (_scaffoldKey.currentState!.isDrawerOpen) {
+                _scaffoldKey.currentState!.openEndDrawer();
+              } else {
+                _scaffoldKey.currentState!.openDrawer();
+              }
+            },
+            child: Wrap(
+              spacing: 0,
+              runSpacing: 0,
+              direction: Axis.horizontal,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    width: 141,
+                    child: TextButton(
                       child: Text(
                         'LOGIN',
                         style: TextStyle(
@@ -174,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(corPrimaria),
-                        fixedSize: MaterialStateProperty.all(Size(161, 39)),
+                        fixedSize: MaterialStateProperty.all(Size(121, 40)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -182,32 +171,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             side: BorderSide.none,
                           ),
                         ),
-                      )),
-                  // TextButton(
-                  //     child: Text(
-                  //       'Registar',
-                  //       style: TextStyle(color: Colors.white),
-                  //     ),
-                  //     onPressed: () {
-                  //       Navigator.push(
-                  //         context,
-                  //         MaterialPageRoute(
-                  //             builder: (context) => SignUpScreen()),
-                  //       );
-                  //     },
-                  //     style: ButtonStyle(
-                  //       fixedSize: MaterialStateProperty.all(Size(161, 39)),
-                  //       shape:
-                  //           MaterialStateProperty.all<RoundedRectangleBorder>(
-                  //         RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(20.0),
-                  //           side: BorderSide(color: corPrimaria, width: 2.0),
-                  //         ),
-                  //       ),
-                  //     ))
-                ]),
-              ),
-            ]),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         body: Center(
           child: _pages.elementAt(_selectedIndex),
         ),

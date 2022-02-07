@@ -18,8 +18,9 @@ class _Search extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(50, 71, 104, 1.0),
-        body: ListView(children: [
+      backgroundColor: Color.fromRGBO(25, 25, 25, 1.0),
+      body: ListView(
+        children: [
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.07,
@@ -30,28 +31,24 @@ class _Search extends State<Search> {
               },
               controller: searchTextController,
               decoration: InputDecoration(
-                fillColor: Color.fromRGBO(36, 45, 60, 1.0),
+                fillColor: Color.fromRGBO(13, 13, 13, 1.0),
                 filled: true,
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 1),
+                  borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(50),
                 ),
                 prefixIcon: Padding(
-                  padding: EdgeInsets.only(left: 40, right: 20),
+                  padding: EdgeInsets.only(left: 20, right: 20),
                   child: Icon(
                     Icons.search,
-                    color: Color(0xFF4EB947),
+                    color: Color.fromRGBO(240, 240, 240, 1.0),
                   ),
                 ),
                 hintText: textFieldHintSeach,
                 // style of the placeholder text, it does not affect the style of the text the user is typing
                 hintStyle: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+                  fontSize: 17,
+                  color: Color.fromRGBO(135, 135, 135, 1.0),
                 ),
               ),
               // style of the text the user is typing, it only affect what the user is typing and doesn't affect the placeholder text
@@ -61,7 +58,9 @@ class _Search extends State<Search> {
               ),
             ),
           ),
-        ]));
+        ],
+      ),
+    );
   }
 
   Future<void> searchGamesResult(value) async {

@@ -18,16 +18,16 @@ class DeveloperListDisplay extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.70,
                 height: 35,
+                margin: EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(50, 71, 104, 1.0),
-                  border: Border.all(
-                    color: corPrimaria,
-                    width: 2,
-                  ),
+                  color: Color.fromRGBO(13, 13, 13, 1),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Center(
                   child: FittedBox(
@@ -47,13 +47,11 @@ class DeveloperListDisplay extends StatelessWidget {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.20,
+                margin: EdgeInsets.only(top: 10, left: 10),
                 height: 35,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(50, 71, 104, 1.0),
-                  border: Border.all(
-                    color: corPrimaria,
-                    width: 2,
-                  ),
+                  color: Color.fromRGBO(13, 13, 13, 1),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Center(
                   child: FittedBox(

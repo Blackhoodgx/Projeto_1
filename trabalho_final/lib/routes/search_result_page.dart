@@ -15,8 +15,8 @@ class SearchResult extends StatefulWidget {
 }
 
 class _SearchResult extends State<SearchResult> {
-String terme;
-_SearchResult(this.terme);
+  String terme;
+  _SearchResult(this.terme);
   @override
   List gamesInHomePage = <Game>[];
   bool enableLoadingCircle = true;
@@ -53,19 +53,21 @@ _SearchResult(this.terme);
       backgroundColor: backGroundColor,
       body: Stack(
         children: [
-          GridView.count(
-            controller: _scrollController,
-            crossAxisCount: 2, // (number of elements in a row)
-            mainAxisSpacing: MediaQuery.of(context).size.height *
-                0.04, // (horizontal space between elements)
-            crossAxisSpacing: MediaQuery.of(context).size.width *
-                0.11, // (vertical space between elements)
-            children: List.generate(
-              gamesInHomePage.length,
-              (index) {
-                return GamesListDisplay(
-                    game: gamesInHomePage[index], content: context);
-              },
+          Container(
+            margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.067),
+            child: GridView.count(
+              controller: _scrollController,
+              crossAxisCount: 2, // (number of elements in a row)
+              childAspectRatio: .75,
+              mainAxisSpacing: MediaQuery.of(context).size.width * 0.067,
+              crossAxisSpacing: MediaQuery.of(context).size.width * 0.067,
+              children: List.generate(
+                gamesInHomePage.length,
+                (index) {
+                  return GamesListDisplay(
+                      game: gamesInHomePage[index], content: context);
+                },
+              ),
             ),
           ),
           Positioned(
@@ -86,7 +88,7 @@ _SearchResult(this.terme);
       ),
     );
   }
-  
+
   // function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
     setState(() {

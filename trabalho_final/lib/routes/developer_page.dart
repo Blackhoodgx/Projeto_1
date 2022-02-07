@@ -73,7 +73,7 @@ class _DeveloperPage extends State<DeveloperPage> {
                 height: 40,
                 width: 40,
                 child: CircularProgressIndicator(
-                  color: darkPrimalGreen,
+                  color: corPrimaria,
                 ),
               ),
             ),

@@ -1,6 +1,9 @@
+import 'dart:ui';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:trabalho_final/routes/homepage.dart';
+import 'package:trabalho_final/routes/signup_screen.dart';
 import 'package:trabalho_final/utilities/hash_password.dart';
 import 'package:trabalho_final/utilities/read_stored_data.dart';
 import 'package:trabalho_final/utilities/constants.dart';
@@ -29,168 +32,200 @@ class _LoginScreen extends State<LoginScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Stack(children: <Widget>[
-        Opacity(
-          opacity: 0.2,
-          child: Container(
-            height: size.height,
-            width:
-                double.infinity, // é a mesma coisa que o mediaQuery.of(context)
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/login.jfif"),
-                    fit: BoxFit.cover)),
-          ),
+      appBar: AppBar(
+        backgroundColor: backGroundColor,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded),
+          color: corPrimaria,
+          onPressed: () => Navigator.pop(context),
         ),
-        SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    "LOGIN",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: corPrimaria,
-                        fontSize: 20),
-                  ),
-                ),
-                Container(
-                  width: 276,
-                  height: 224,
-                  alignment: Alignment.center,
-                  child: Image.asset("assets/images/image_not_found.png"),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Email",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 19, vertical: 5),
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      width: 390,
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: null,
-                          border: Border.all(color: corPrimaria, width: 1),
-                          borderRadius: BorderRadius.horizontal()),
-                      child: TextField(
-                        controller: emailTextController,
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                              color:
-                                  Colors.grey[200]), //altera a cor do hint text
-                          hintText: textFieldHintEmail,
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color:
-                                    corPrimaria), //quando se carrega muda a cor inferior dentro da textbox
-                          ),
+      ),
+      body: Stack(children: <Widget>[
+        Container(
+          width: size.width,
+          height: size.height,
+          color: Color.fromRGBO(5, 5, 7, 1),
+          child: Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: size.width * .8,
+              height: size.height * .6,
+              color: Colors.black,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(size.width * .05, 0, 0, 2),
+                      child: Text(
+                        'LOGIN',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: corPrimaria,
                         ),
                       ),
                     ),
-                    Text(
-                      errorEmailMensagem,
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      width: size.width * .3,
+                      height: 3,
+                      color: corPrimaria,
+                      margin: EdgeInsets.only(bottom: 20),
                     ),
-                  ],
-                ),
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Password",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 19, vertical: 5),
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      width: 390,
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: null,
-                          border: Border.all(color: corPrimaria, width: 1),
-                          borderRadius: BorderRadius.horizontal()),
-                      child: TextField(
-                        controller: passwordTextController,
-                        obscureText: true, //não mostra a password
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.grey[200]),
-                          hintText: textFieldHintPass,
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color:
-                                    corPrimaria), //quando se carrega muda a cor inferior dentro da textbox
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: size.width * .6,
+                      child: Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'USERNAME',
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      errorPasswordMensagem,
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ],
-                ),
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
-
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 25.0),
-                  width: 100,
-                  height: 100,
-                  child: ElevatedButton(
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Text("Login"),
-                    ), // para o texto caber todo dentro do button sem quebrar
-                    onPressed: login,
-                    style: ElevatedButton.styleFrom(
-                      side: BorderSide(
-                          width: 2, color: corPrimaria), //border do button
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      primary: corPrimaria.withOpacity(0),
-                      textStyle: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                          Container(
+                            margin: EdgeInsets.only(bottom: 20),
+                            color: Color.fromRGBO(3, 3, 3, 1),
+                            child: TextFormField(
+                              style: TextStyle(color: lighterWhite),
+                              decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                fillColor: Color.fromRGBO(3, 3, 3, 1),
+                                suffix: Icon(
+                                  Icons.person,
+                                  color: lighterWhite,
+                                ),
+                                hintText: 'Introduza o seu username',
+                                hintStyle: TextStyle(
+                                  height: 2.5,
+                                  fontSize: 13,
+                                  color: Color.fromRGBO(87, 87, 87, 1),
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'PASSWORD',
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 20),
+                            color: Color.fromRGBO(3, 3, 3, 1),
+                            child: TextFormField(
+                              style: TextStyle(color: lighterWhite),
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                fillColor: Color.fromRGBO(3, 3, 3, 1),
+                                suffix: Icon(
+                                  Icons.lock_outline,
+                                  color: lighterWhite,
+                                ),
+                                hintText: 'Introduza a sua password',
+                                hintStyle: TextStyle(
+                                  fontSize: 13,
+                                  height: 2.5,
+                                  color: Color.fromRGBO(87, 87, 87, 1),
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              width: size.width * .3,
+                              height: 40,
+                              child: FloatingActionButton(
+                                onPressed: () {
+                                  login();
+                                },
+                                child: Text(
+                                  'ENTRAR',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins'),
+                                ),
+                                backgroundColor: corPrimaria,
+                                shape: BeveledRectangleBorder(
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: EdgeInsets.only(top: size.height * .1),
+                              child: RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                    color: lighterWhite,
+                                    fontSize: 10,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          'Ainda não está registado? registe-se',
+                                    ),
+                                    TextSpan(
+                                      text: ' aqui',
+                                      style: TextStyle(color: corPrimaria),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SignUpScreen()),
+                                          );
+                                        },
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ]),
     );
   }
-
 
   login() async {
     // save the input of the text field in a variabel to use later

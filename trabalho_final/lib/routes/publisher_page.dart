@@ -44,6 +44,14 @@ class _PublisherPage extends State<PublisherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backGroundColor,
+      appBar: AppBar(
+        backgroundColor: backGroundColor,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded),
+          color: corPrimaria,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Stack(
         children: [
           ListView(
@@ -65,7 +73,7 @@ class _PublisherPage extends State<PublisherPage> {
                 height: 40,
                 width: 40,
                 child: CircularProgressIndicator(
-                  color: darkPrimalGreen,
+                  color: corPrimaria,
                 ),
               ),
             ),
