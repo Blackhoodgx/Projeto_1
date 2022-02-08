@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/models/game_details.dart';
+import 'package:trabalho_final/utilities/constants.dart';
 
 class GameDetailsDisplay extends StatelessWidget {
   const GameDetailsDisplay({
@@ -22,25 +24,39 @@ class GameDetailsDisplay extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Container(
-            child: Stack(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 1,
-                  height: MediaQuery.of(context).size.height * 0.20,
-                  child: Image.network(imageUrl),
+          Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width,
+                color: Color.fromRGBO(255, 255, 255, 0.10),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.fitHeight,
                 ),
-                Text(
-                  info.gameTitle,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
-                    backgroundColor: Color.fromRGBO(0, 0, 0, 0.25),
-                  ),
+              ),
+              Text(
+                info.gameTitle,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                  backgroundColor: Color.fromRGBO(0, 0, 0, 0.75),
                 ),
-              ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            info.gameDescripiton,
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
             ),
           ),
         ],
