@@ -45,13 +45,20 @@ class GamesListDisplay extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          child: Text(
-            game.gameTitle,
-            style: TextStyle(
-              fontSize: 11.0,
-              color: Color.fromRGBO(130, 130, 130, 1.0),
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w200,
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return GameDetialsPage(idGame: game.gameId.toString());
+              }));
+            },
+            child: Text(
+              game.gameTitle,
+              style: TextStyle(
+                fontSize: 11.0,
+                color: Color.fromRGBO(130, 130, 130, 1.0),
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w200,
+              ),
             ),
           ),
         ),

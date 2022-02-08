@@ -4,8 +4,8 @@ import 'package:trabalho_final/Services/game_detail_service.dart';
 import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/models/game_details.dart';
 import 'package:trabalho_final/routes/homepage.dart';
+import 'package:trabalho_final/utilities/constants.dart';
 import 'package:trabalho_final/utilities/game_details_url.dart';
-import 'package:trabalho_final/utilities/global_variables.dart';
 import 'package:trabalho_final/widgets/game_info_display.dart';
 
 class GameDetialsPage extends StatefulWidget {
@@ -34,11 +34,21 @@ class _GameDetialsPage extends State<GameDetialsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF242D3C),
+      appBar: AppBar(
+        backgroundColor: backGroundColor,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded),
+          color: corPrimaria,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      backgroundColor: backGroundColor,
       body: ListView(
         controller: _scrollController,
-        children: List.generate(gameInfo.length, (index) {
-          return GameDetailsDisplay(info: gameInfo[index], context: context);
+        children: List.generate(
+          gameInfo.length,
+          (index) {
+            return GameDetailsDisplay(info: gameInfo[index], context: context);
           },
         ),
       ),
@@ -54,7 +64,6 @@ class _GameDetialsPage extends State<GameDetialsPage> {
     setState(() {
       gameInfo.add(gameDetails);
       enableLoadingCircle = false;
-
     });
   }
 }
