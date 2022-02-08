@@ -11,12 +11,14 @@ class GameDetailService {
       String gameDescripiton = jsonDecode(response.body)['description'] ?? '';
       String gameDescrip = gameDescripiton.replaceAll(RegExp('<p>'), '');
       gameDescripiton = gameDescrip.replaceAll(RegExp('</p>'), '');
-      String gameBackGroundImage = jsonDecode(response.body)['background_image'] ?? '';
+      String gameBackGroundImage =
+          jsonDecode(response.body)['background_image'] ?? '';
 
       GameDetails gameDetails = new GameDetails(
-          gameTitle: gameTitle,
-          gameDescripiton: gameDescripiton,
-          gameBackGroundImage: gameBackGroundImage);
+        gameTitle: gameTitle,
+        gameDescripiton: gameDescripiton,
+        gameBackGroundImage: gameBackGroundImage,
+      );
 
       return gameDetails;
     } else {

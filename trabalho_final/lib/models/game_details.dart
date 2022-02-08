@@ -9,12 +9,11 @@ class GameDetails {
     required this.gameBackGroundImage,
   });
 
-factory GameDetails.fromJson(Map<String, dynamic> json){
-
-  return GameDetails(
-    gameTitle: json['name'] ?? '',
-    gameDescripiton: json['description'] ?? '',
-    gameBackGroundImage: json['background_image'] ?? '',
+  factory GameDetails.fromJson(Map<String, dynamic> json) {
+    return GameDetails(
+      gameTitle: json['name'] ?? '',
+      gameDescripiton: json['description'] ?? '',
+      gameBackGroundImage: json['background_image'] ?? '',
     );
-}
+  }
 }

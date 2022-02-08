@@ -2,6 +2,7 @@ import 'package:trabalho_final/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart'; //import
 
 // it use in the home_page and search_result_page do to the games infomation in its page by the same
 class GamesListDisplay extends StatelessWidget {
@@ -64,44 +65,28 @@ class GamesListDisplay extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          child: Text(
-            '4.5',
-            style: TextStyle(
-              fontSize: 12.0,
-              color: lighterWhite,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w200,
+          child: RatingBarIndicator(
+            // adiciona o widget das estrelas
+            rating: game.gameRating,
+            itemBuilder: (context, index) => Icon(
+              Icons.star,
+              color: Colors.amber,
             ),
+            itemCount: 5,
+            itemSize: 15.0,
+            direction: Axis.horizontal,
           ),
+          // child: Text(
+          //   game.gameRating.toString(),
+          //   style: TextStyle(
+          //     fontSize: 12.0,
+          //     color: lighterWhite,
+          //     fontFamily: 'Poppins',
+          //     fontWeight: FontWeight.w200,
+          //   ),
+          // ),
         ),
       ],
     );
-    // return Container(
-    //   child: Column(
-    //     children: [
-    //       Image.network(
-    //         imageUrl,
-    //         width: MediaQuery.of(context).size.width * 0.35,
-    //         height: MediaQuery.of(context).size.height * 0.14,
-    //       ),
-    //       TextButton(
-    //         onPressed: () {
-    //           //Navigator.push(context, MaterialPageRoute(builder: (context) {
-    //             //return GameDetialsPage(idGame: game.gameId.toString());
-    //           //}));
-    //         },
-    //         child: Text(
-    //           game.gameTitle,
-    //           style: TextStyle(
-    //             fontSize: 20,
-    //             fontFamily: 'Poppins',
-    //             fontWeight: FontWeight.w400,
-    //             color: Colors.white,
-    //           ),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }
