@@ -35,7 +35,8 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() =>
+      _MyHomePageState(); // assim podemos criar statefullWidgets
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -45,10 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final _pages = [
+    // um array com as paginas que podem ser acessadas apartir da BottomNavigationBar
     Homepage(),
     Search(),
   ];
   void _onItemTapped(int index) {
+    // recebe uma variavel index do tipo inteira e atualiza o programa ao mesmo tempo que atribui o valor de index à variavel privada _selectedIndex
     setState(() {
       _selectedIndex = index;
     });
@@ -60,18 +63,23 @@ class _MyHomePageState extends State<MyHomePage> {
         key: _scaffoldKey,
         drawer: Drawer(
           shape: const RoundedRectangleBorder(
+            //mete as borders mais arredondadas
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10),
                 bottomRight: Radius.circular(10)),
           ),
-          backgroundColor: backGroundColor,
+          backgroundColor: backGroundColor, // cor do background
           child: Column(
             children: <Widget>[
               DrawerHeader(
+                child: Align(
+                  alignment: Alignment.center,
                   child: Text(
-                "Daw Dispositivos Moveis",
-                style: TextStyle(color: Colors.white),
-              )),
+                    "Daw Dispositivos Moveis",
+                    style: TextStyle(color: corPrimaria),
+                  ),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.fromLTRB(
                     MediaQuery.of(context).size.width * 0.03,
@@ -81,12 +89,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: IconButton(
+                    // icon no inicio da tile
                     icon: Icon(Icons.check_circle),
                     onPressed: () => print('select'),
                   ),
                   title:
                       Text('Developers', style: TextStyle(color: Colors.white)),
                   trailing: Icon(
+                    //icon após o tile
                     Icons.arrow_forward_ios,
                   ),
                   onTap: () {
@@ -126,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         appBar: AppBar(
-          toolbarHeight: 70,
+          toolbarHeight: 70, //altura da appBar
           backgroundColor: backGroundColor,
           title: GestureDetector(
             onTap: () {
@@ -137,6 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             },
             child: Wrap(
+              //wrap faz mais ou menos o mesmo que o Row mas têm opções de espaçamento
               spacing: 0,
               runSpacing: 0,
               direction: Axis.horizontal,
@@ -144,6 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Container(
+                    //container do botão
                     width: 141,
                     child: TextButton(
                       child: Text(
@@ -179,7 +191,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         body: Center(
-          child: _pages.elementAt(_selectedIndex),
+          child: _pages.elementAt(
+              _selectedIndex), // vai buscar os elementos da pagina selecionada
         ),
         bottomNavigationBar: BottomNavigationBar(
           selectedIconTheme: IconThemeData(color: corPrimaria),

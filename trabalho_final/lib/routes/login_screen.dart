@@ -42,22 +42,28 @@ class _LoginScreen extends State<LoginScreen> {
       ),
       body: Stack(children: <Widget>[
         Container(
+          //container do quadrado preto fundo do ecrã (background)
           width: size.width,
           height: size.height,
           color: Color.fromRGBO(5, 5, 7, 1),
           child: Align(
             alignment: Alignment.center,
             child: Container(
-              width: size.width * .8,
-              height: size.height * .6,
+              //container do quadrado preto no centro do ecrã
+              width: size.width * .8, // .8 vai buscar 80% da largura do ecran
+              height: size.height * .6, // .6 vai buscar 60% altura do ecran
               color: Colors.black,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                // faz com que os elementos fiquem alinhados uns abaixo dos outros
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // por default todos os elementos vão para o centro
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Align(
+                    // alinha o LOGIN á esquerda
                     alignment: Alignment.topLeft,
                     child: Container(
+                      // container do text
                       padding: EdgeInsets.fromLTRB(size.width * .05, 0, 0, 2),
                       child: Text(
                         'LOGIN',
@@ -71,6 +77,7 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                   ),
                   Align(
+                    // retangulo abaixo do Text (sim é um retangulo)
                     alignment: Alignment.centerLeft,
                     child: Container(
                       width: size.width * .3,
@@ -80,13 +87,17 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                   ),
                   Align(
+                    // alinha os containers que tem o text de username; o text field e igualmente para a password
                     alignment: Alignment.center,
                     child: Container(
-                      width: size.width * .6,
+                      //container que leva os restantes elementos da página
+                      width: size.width *
+                          .6, //para ficar com 60% da largura total dando assim margens à esquerda e à direita
                       child: Column(
                         children: [
                           Container(
-                            alignment: Alignment.centerLeft,
+                            alignment: Alignment
+                                .centerLeft, //alinha o texto à esquerda
                             child: Text(
                               'USERNAME',
                               style: TextStyle(
@@ -101,12 +112,14 @@ class _LoginScreen extends State<LoginScreen> {
                             margin: EdgeInsets.only(bottom: 20),
                             color: Color.fromRGBO(3, 3, 3, 1),
                             child: TextFormField(
+                              // quadrado onde se escreve o texto
                               style: TextStyle(color: lighterWhite),
                               decoration: InputDecoration(
                                 contentPadding:
                                     EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 fillColor: Color.fromRGBO(3, 3, 3, 1),
                                 suffix: Icon(
+                                  // icon que apareçe quando clicamos no textformfield do username ( prefixo apareçe antes e sufixo apareçe depois)
                                   Icons.person,
                                   color: lighterWhite,
                                 ),
@@ -159,6 +172,7 @@ class _LoginScreen extends State<LoginScreen> {
                             ),
                           ),
                           Align(
+                            // alignment á direita para o botão "entrar"
                             alignment: Alignment.centerRight,
                             child: Container(
                               width: size.width * .3,
@@ -186,6 +200,7 @@ class _LoginScreen extends State<LoginScreen> {
                             child: Container(
                               margin: EdgeInsets.only(top: size.height * .1),
                               child: RichText(
+                                // permite a customização de segmentos de texto individuais
                                 text: TextSpan(
                                   style: TextStyle(
                                     color: lighterWhite,
@@ -193,6 +208,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   ),
                                   children: [
                                     TextSpan(
+                                      //segmento de texto individual sem espaçamento
                                       text:
                                           'Ainda não está registado? registe-se',
                                     ),
