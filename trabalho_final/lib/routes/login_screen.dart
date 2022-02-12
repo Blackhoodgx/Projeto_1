@@ -95,11 +95,12 @@ class _LoginScreen extends State<LoginScreen> {
                           .6, //para ficar com 60% da largura total dando assim margens à esquerda e à direita
                       child: Column(
                         children: [
+                          
                           Container(
                             alignment: Alignment
                                 .centerLeft, //alinha o texto à esquerda
                             child: Text(
-                              'USERNAME',
+                              'EMAIL',
                               style: TextStyle(
                                 color: lighterWhite,
                                 fontSize: 13,
@@ -123,7 +124,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   Icons.person,
                                   color: lighterWhite,
                                 ),
-                                hintText: 'Introduza o seu username',
+                                hintText: 'Introduza o seu email',
                                 hintStyle: TextStyle(
                                   height: 2.5,
                                   fontSize: 13,
@@ -192,6 +193,32 @@ class _LoginScreen extends State<LoginScreen> {
                                 shape: BeveledRectangleBorder(
                                   borderRadius: BorderRadius.circular(0),
                                 ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment
+                                .centerLeft, //alinha o texto à esquerda
+                            child: Text(
+                              errorEmailMensagem,
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w200,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment
+                                .centerLeft, //alinha o texto à esquerda
+                            child: Text(
+                              errorPasswordMensagem,
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w200,
+                                fontFamily: 'Poppins',
                               ),
                             ),
                           ),

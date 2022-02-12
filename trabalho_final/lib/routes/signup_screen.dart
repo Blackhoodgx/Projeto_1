@@ -86,10 +86,10 @@ class _SignUpScreen extends State<SignUpScreen> {
                       width: size.width * .6,
                       child: Column(
                         children: [
-                          Container(
+                          Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'USERNAME',
+                              'EMAIL',
                               style: TextStyle(
                                 color: lighterWhite,
                                 fontSize: 13,
@@ -108,13 +108,13 @@ class _SignUpScreen extends State<SignUpScreen> {
                                     EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 fillColor: Color.fromRGBO(3, 3, 3, 1),
                                 suffix: Icon(
-                                  Icons.person,
+                                  Icons.email_outlined,
                                   color: lighterWhite,
                                 ),
-                                hintText: 'Introduza o seu username',
+                                hintText: 'Introduza o seu email',
                                 hintStyle: TextStyle(
-                                  height: 2.5,
                                   fontSize: 13,
+                                  height: 2.5,
                                   color: Color.fromRGBO(87, 87, 87, 1),
                                   fontWeight: FontWeight.w300,
                                   fontFamily: 'Poppins',
@@ -162,7 +162,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'EMAIL',
+                              'CONFIRME A PASSWORD',
                               style: TextStyle(
                                 color: lighterWhite,
                                 fontSize: 13,
@@ -182,10 +182,10 @@ class _SignUpScreen extends State<SignUpScreen> {
                                     EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 fillColor: Color.fromRGBO(3, 3, 3, 1),
                                 suffix: Icon(
-                                  Icons.email_outlined,
+                                  Icons.lock_outline,
                                   color: lighterWhite,
                                 ),
-                                hintText: 'Introduza o seu email',
+                                hintText: 'Introduza a sua password',
                                 hintStyle: TextStyle(
                                   fontSize: 13,
                                   height: 2.5,
@@ -196,6 +196,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                               ),
                             ),
                           ),
+                          
                           Align(
                             alignment: Alignment.centerRight,
                             child: Container(
@@ -219,10 +220,49 @@ class _SignUpScreen extends State<SignUpScreen> {
                               ),
                             ),
                           ),
+                          Container(
+                            alignment: Alignment
+                                .centerLeft, //alinha o texto à esquerda
+                            child: Text(
+                              errorEmailMensagem,
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w200,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment
+                                .centerLeft, //alinha o texto à esquerda
+                            child: Text(
+                              errorPasswordMensagem,
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w200,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment
+                                .centerLeft, //alinha o texto à esquerda
+                            child: Text(
+                              errorRepeatPasswordMensagem,
+                              style: TextStyle(
+                                color: lighterWhite,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w200,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ),
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                              margin: EdgeInsets.only(top: size.height * .1),
+                              margin: EdgeInsets.only(top: size.height * .05),
                               child: RichText(
                                 text: TextSpan(
                                   style: TextStyle(
