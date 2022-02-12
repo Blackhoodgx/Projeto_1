@@ -2,7 +2,8 @@ import 'package:trabalho_final/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/routes/game_details_page.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart'; //import
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 // it use in the home_page and search_result_page do to the games infomation in its page by the same
 class GamesListDisplay extends StatelessWidget {
@@ -19,11 +20,7 @@ class GamesListDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String imageUrl;
-    if (game.gameBackgroundImage.isEmpty) {
-      imageUrl = 'assets/images/image_not_found.png';
-    } else {
-      imageUrl = game.gameBackgroundImage;
-    }
+    imageUrl = game.gameBackgroundImage;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,11 +32,30 @@ class GamesListDisplay extends StatelessWidget {
             fit: BoxFit.fill,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                imageUrl,
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.width * 0.4,
-                fit: BoxFit.fitHeight,
+              child: Container(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return GameDetialsPage(idGame: game.gameId.toString());
+                    }));
+                  },
+                  child: CachedNetworkImage(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.width * 0.4,
+                    fit: BoxFit.fitHeight,
+                    imageUrl: imageUrl,
+                    placeholder: (context, url) => CircularProgressIndicator(
+                        color: corPrimaria,
+                      ),
+                    errorWidget: (context, url, error) => Image.asset(
+                      'assets/images/image_not_found.png',
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.width * 0.4,
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
