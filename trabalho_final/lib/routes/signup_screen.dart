@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:trabalho_final/components/body.dart';
+import 'package:trabalho_final/main.dart';
 import 'package:trabalho_final/routes/homepage.dart';
 import 'package:trabalho_final/routes/login_screen.dart';
 import 'package:trabalho_final/utilities/hash_password.dart';
@@ -28,6 +29,7 @@ var textfielHintRepeatedPass = "Insira novamente a Password";
 TextEditingController emailTextController = TextEditingController();
 TextEditingController passwordTextController = TextEditingController();
 TextEditingController repeatedPasswordController = TextEditingController();
+final ScrollController _scrollController = ScrollController();
 
 class _SignUpScreen extends State<SignUpScreen> {
   Widget build(BuildContext context) {
@@ -46,257 +48,262 @@ class _SignUpScreen extends State<SignUpScreen> {
           width: size.width,
           height: size.height,
           color: Color.fromRGBO(5, 5, 7, 1),
-          child: Align(
-            alignment: Alignment.center,
-            child: Container(
-              width: size.width * .8,
-              height: size.height * .6,
-              color: Colors.black,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(size.width * .05, 0, 0, 2),
-                      child: Text(
-                        'REGISTAR',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          color: corPrimaria,
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: size.width * .8,
+                height: size.height * .6,
+                color: Colors.black,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(size.width * .05, 0, 0, 2),
+                        child: Text(
+                          'REGISTAR',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            color: corPrimaria,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: size.width * .3,
-                      height: 3,
-                      color: corPrimaria,
-                      margin: EdgeInsets.only(bottom: 20),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: size.width * .6,
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'EMAIL',
-                              style: TextStyle(
-                                color: lighterWhite,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 20),
-                            color: Color.fromRGBO(3, 3, 3, 1),
-                            child: TextFormField(
-                              style: TextStyle(color: lighterWhite),
-                              decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                fillColor: Color.fromRGBO(3, 3, 3, 1),
-                                suffix: Icon(
-                                  Icons.email_outlined,
-                                  color: lighterWhite,
-                                ),
-                                hintText: 'Introduza o seu email',
-                                hintStyle: TextStyle(
-                                  fontSize: 13,
-                                  height: 2.5,
-                                  color: Color.fromRGBO(87, 87, 87, 1),
-                                  fontWeight: FontWeight.w300,
-                                  fontFamily: 'Poppins',
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'PASSWORD',
-                              style: TextStyle(
-                                color: lighterWhite,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 20),
-                            color: Color.fromRGBO(3, 3, 3, 1),
-                            child: TextFormField(
-                              style: TextStyle(color: lighterWhite),
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                fillColor: Color.fromRGBO(3, 3, 3, 1),
-                                suffix: Icon(
-                                  Icons.lock_outline,
-                                  color: lighterWhite,
-                                ),
-                                hintText: 'Introduza a sua password',
-                                hintStyle: TextStyle(
-                                  fontSize: 13,
-                                  height: 2.5,
-                                  color: Color.fromRGBO(87, 87, 87, 1),
-                                  fontWeight: FontWeight.w300,
-                                  fontFamily: 'Poppins',
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'CONFIRME A PASSWORD',
-                              style: TextStyle(
-                                color: lighterWhite,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 20),
-                            color: Color.fromRGBO(3, 3, 3, 1),
-                            child: TextFormField(
-                              style: TextStyle(color: lighterWhite),
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                fillColor: Color.fromRGBO(3, 3, 3, 1),
-                                suffix: Icon(
-                                  Icons.lock_outline,
-                                  color: lighterWhite,
-                                ),
-                                hintText: 'Introduza a sua password',
-                                hintStyle: TextStyle(
-                                  fontSize: 13,
-                                  height: 2.5,
-                                  color: Color.fromRGBO(87, 87, 87, 1),
-                                  fontWeight: FontWeight.w300,
-                                  fontFamily: 'Poppins',
-                                ),
-                              ),
-                            ),
-                          ),
-                          
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Container(
-                              width: size.width * .3,
-                              height: 40,
-                              child: FloatingActionButton(
-                                onPressed: () {
-                                  registe();
-                                },
-                                child: Text(
-                                  'CRIAR',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black,
-                                      fontFamily: 'Poppins'),
-                                ),
-                                backgroundColor: corPrimaria,
-                                shape: BeveledRectangleBorder(
-                                  borderRadius: BorderRadius.circular(0),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment
-                                .centerLeft, //alinha o texto à esquerda
-                            child: Text(
-                              errorEmailMensagem,
-                              style: TextStyle(
-                                color: lighterWhite,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment
-                                .centerLeft, //alinha o texto à esquerda
-                            child: Text(
-                              errorPasswordMensagem,
-                              style: TextStyle(
-                                color: lighterWhite,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment
-                                .centerLeft, //alinha o texto à esquerda
-                            child: Text(
-                              errorRepeatPasswordMensagem,
-                              style: TextStyle(
-                                color: lighterWhite,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w200,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: EdgeInsets.only(top: size.height * .05),
-                              child: RichText(
-                                text: TextSpan(
-                                  style: TextStyle(
-                                    color: lighterWhite,
-                                    fontSize: 10,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'Já está registado? entre na sua conta',
-                                    ),
-                                    TextSpan(
-                                      text: ' aqui',
-                                      style: TextStyle(color: corPrimaria),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen()),
-                                          );
-                                        },
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        width: size.width * .3,
+                        height: 3,
+                        color: corPrimaria,
+                        margin: EdgeInsets.only(bottom: 20),
                       ),
                     ),
-                  ),
-                ],
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: size.width * .6,
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'EMAIL',
+                                style: TextStyle(
+                                  color: lighterWhite,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 20),
+                              color: Color.fromRGBO(3, 3, 3, 1),
+                              child: TextFormField(
+                                controller: emailTextController,
+                                style: TextStyle(color: lighterWhite),
+                                decoration: InputDecoration(
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                  fillColor: Color.fromRGBO(3, 3, 3, 1),
+                                  suffix: Icon(
+                                    Icons.email_outlined,
+                                    color: lighterWhite,
+                                  ),
+                                  hintText: textFieldHintEmail,
+                                  hintStyle: TextStyle(
+                                    fontSize: 13,
+                                    height: 2.5,
+                                    color: Color.fromRGBO(87, 87, 87, 1),
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'PASSWORD',
+                                style: TextStyle(
+                                  color: lighterWhite,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 20),
+                              color: Color.fromRGBO(3, 3, 3, 1),
+                              child: TextFormField(
+                                controller: passwordTextController,
+                                style: TextStyle(color: lighterWhite),
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                  fillColor: Color.fromRGBO(3, 3, 3, 1),
+                                  suffix: Icon(
+                                    Icons.lock_outline,
+                                    color: lighterWhite,
+                                  ),
+                                  hintText: textFieldHintPass,
+                                  hintStyle: TextStyle(
+                                    fontSize: 13,
+                                    height: 2.5,
+                                    color: Color.fromRGBO(87, 87, 87, 1),
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'CONFIRME A PASSWORD',
+                                style: TextStyle(
+                                  color: lighterWhite,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 20),
+                              color: Color.fromRGBO(3, 3, 3, 1),
+                              child: TextFormField(
+                                controller: repeatedPasswordController,
+                                style: TextStyle(color: lighterWhite),
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                  fillColor: Color.fromRGBO(3, 3, 3, 1),
+                                  suffix: Icon(
+                                    Icons.lock_outline,
+                                    color: lighterWhite,
+                                  ),
+                                  hintText: textfielHintRepeatedPass,
+                                  hintStyle: TextStyle(
+                                    fontSize: 13,
+                                    height: 2.5,
+                                    color: Color.fromRGBO(87, 87, 87, 1),
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Container(
+                                width: size.width * .3,
+                                height: 40,
+                                child: FloatingActionButton(
+                                  onPressed: () {
+                                    registe();
+                                  },
+                                  child: Text(
+                                    'CRIAR',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontFamily: 'Poppins'),
+                                  ),
+                                  backgroundColor: corPrimaria,
+                                  shape: BeveledRectangleBorder(
+                                    borderRadius: BorderRadius.circular(0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment
+                                  .centerLeft, //alinha o texto à esquerda
+                              child: Text(
+                                errorEmailMensagem,
+                                style: TextStyle(
+                                  color: lighterWhite,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w200,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment
+                                  .centerLeft, //alinha o texto à esquerda
+                              child: Text(
+                                errorPasswordMensagem,
+                                style: TextStyle(
+                                  color: lighterWhite,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w200,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment
+                                  .centerLeft, //alinha o texto à esquerda
+                              child: Text(
+                                errorRepeatPasswordMensagem,
+                                style: TextStyle(
+                                  color: lighterWhite,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w200,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: EdgeInsets.only(top: size.height * .05),
+                                child: RichText(
+                                  text: TextSpan(
+                                    style: TextStyle(
+                                      color: lighterWhite,
+                                      fontSize: 10,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            'Já está registado? entre na sua conta',
+                                      ),
+                                      TextSpan(
+                                        text: ' aqui',
+                                        style: TextStyle(color: corPrimaria),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginScreen()),
+                                            );
+                                          },
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -357,7 +364,7 @@ class _SignUpScreen extends State<SignUpScreen> {
         userEmail = email;
         userPassword = hashPass;
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Homepage();
+          return MyApp();
         }));
       }
     });

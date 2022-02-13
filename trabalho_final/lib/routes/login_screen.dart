@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:trabalho_final/main.dart';
 import 'package:trabalho_final/routes/homepage.dart';
 import 'package:trabalho_final/routes/signup_screen.dart';
 import 'package:trabalho_final/utilities/hash_password.dart';
@@ -113,6 +114,7 @@ class _LoginScreen extends State<LoginScreen> {
                             margin: EdgeInsets.only(bottom: 20),
                             color: Color.fromRGBO(3, 3, 3, 1),
                             child: TextFormField(
+                              controller: emailTextController,
                               // quadrado onde se escreve o texto
                               style: TextStyle(color: lighterWhite),
                               decoration: InputDecoration(
@@ -124,7 +126,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   Icons.person,
                                   color: lighterWhite,
                                 ),
-                                hintText: 'Introduza o seu email',
+                                hintText: textFieldHintEmail,
                                 hintStyle: TextStyle(
                                   height: 2.5,
                                   fontSize: 13,
@@ -151,6 +153,7 @@ class _LoginScreen extends State<LoginScreen> {
                             margin: EdgeInsets.only(bottom: 20),
                             color: Color.fromRGBO(3, 3, 3, 1),
                             child: TextFormField(
+                              controller: passwordTextController,
                               style: TextStyle(color: lighterWhite),
                               obscureText: true,
                               decoration: InputDecoration(
@@ -161,7 +164,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   Icons.lock_outline,
                                   color: lighterWhite,
                                 ),
-                                hintText: 'Introduza a sua password',
+                                hintText: textFieldHintPass,
                                 hintStyle: TextStyle(
                                   fontSize: 13,
                                   height: 2.5,
@@ -313,7 +316,7 @@ class _LoginScreen extends State<LoginScreen> {
             userPassword = hashPass;
             // go to the welcome page
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return Homepage();
+              return MyApp();
             }));
           } else {
             errorPasswordMensagem = "your Password is incorrect";
