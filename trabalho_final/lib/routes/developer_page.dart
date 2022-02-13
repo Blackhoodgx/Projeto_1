@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:trabalho_final/Services/developer_list_service.dart';
+import 'package:trabalho_final/services/developer_list_service.dart';
 import 'package:trabalho_final/models/developer.dart';
 import 'package:trabalho_final/models/developer_list_info.dart';
 import 'package:trabalho_final/utilities/constants.dart';
-import 'package:trabalho_final/widgets/developer_list_Display.dart';
+import 'package:trabalho_final/widgets/developer_list_display.dart';
 
 class DeveloperPage extends StatefulWidget {
   @override

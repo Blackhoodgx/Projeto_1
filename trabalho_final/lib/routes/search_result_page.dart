@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trabalho_final/Services/games_list_service.dart';
+import 'package:trabalho_final/services/games_list_service.dart';
 import 'package:trabalho_final/models/games_list_info.dart';
 import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/utilities/search_game_url.dart';

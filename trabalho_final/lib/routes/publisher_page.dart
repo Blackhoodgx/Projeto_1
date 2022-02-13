@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:trabalho_final/Services/publisher_list_service.dart';
+import 'package:trabalho_final/services/publisher_list_service.dart';
 import 'package:trabalho_final/models/publisher.dart';
 import 'package:trabalho_final/models/publisher_list_info.dart';
 import 'package:trabalho_final/utilities/constants.dart';
-import 'package:trabalho_final/widgets/publisher_list_Display.dart';
+import 'package:trabalho_final/widgets/publisher_list_display.dart';
 
 class PublisherPage extends StatefulWidget {
   @override

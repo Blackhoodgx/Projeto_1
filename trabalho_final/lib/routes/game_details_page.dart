@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:trabalho_final/Services/game_detail_service.dart';
+import 'package:trabalho_final/services/game_detail_service.dart';
 import 'package:trabalho_final/models/game.dart';
 import 'package:trabalho_final/models/game_details.dart';
 import 'package:trabalho_final/routes/homepage.dart';
