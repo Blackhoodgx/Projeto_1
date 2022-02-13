@@ -21,7 +21,7 @@ class SignUpScreen extends StatefulWidget {
 var errorEmailMensagem = "";
 var errorPasswordMensagem = "";
 var errorRepeatPasswordMensagem = "";
-// defaul mensagem that show every time the user goes to the sign up page
+// defaul mensagem that show every time the user enter the page
 var textFieldHintEmail = "Insira aqui o seu email";
 var textFieldHintPass = "Insira aqui a sua Password";
 var textfielHintRepeatedPass = "Insira novamente a Password";

@@ -22,7 +22,7 @@ class LoginScreen extends StatefulWidget {
 // error mensagem is to informe the user why is not makeing a login
 var errorEmailMensagem = "";
 var errorPasswordMensagem = "";
-// defaul mensagem that show every time the user goes to the sign up page
+// defaul mensagem that show every time the user enter the page
 var textFieldHintEmail = "Insira aqui o seu email";
 var textFieldHintPass = "Insira aqui a sua Password";
 // get the input the user use in the textField

@@ -13,7 +13,9 @@ class DeveloperPage extends StatefulWidget {
 
 class _DeveloperPage extends State<DeveloperPage> {
   @override
+  // get the first url to make the request
   String nextPage = urlRawgDeveloperDefault;
+  // save in a list the object developer create for the data of the api
   List developersList = <Developer>[];
   bool enableLoadingCircle = true;
   final ScrollController _scrollController = ScrollController();
@@ -96,15 +98,19 @@ class _DeveloperPage extends State<DeveloperPage> {
 // function to use the api, the function recive the url that it will use
   Future<void> getListofDevelopers(urlListOfDevelopers) async {
     setState(() {
+      // show the loadingcircle in the screen
       enableLoadingCircle = true;
     });
     DeveloperListService developerListService = new DeveloperListService();
     DeveloperListInfo developerListInfo =
         await developerListService.getDevelopers(urlListOfDevelopers);
+        // force the program to await to end getDevelopers
     await Future.delayed(Duration(seconds: 4));
     setState(() {
       developersList.addAll(developerListInfo.getDeveloperList);
+      // change the url to the new one
       nextPage = developerListInfo.getNextGame;
+      // hide the loading circule
       enableLoadingCircle = false;
     });
   }

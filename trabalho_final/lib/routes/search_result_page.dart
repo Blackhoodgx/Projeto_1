@@ -24,7 +24,9 @@ class _SearchResult extends State<SearchResult> {
   final ScrollController _scrollController = ScrollController();
   void initState() {
     SearchGameUrl searchGameUrl = new SearchGameUrl();
+    // add the search terme to the url
     searchGameUrl.addSearchTermeToUrl = terme;
+    // get the new url
     nextPage = searchGameUrl.getSearchUrl;
     getListofGames(nextPage);
     super.initState();
@@ -92,6 +94,7 @@ class _SearchResult extends State<SearchResult> {
   // function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
     setState(() {
+      // show the loading circle
       enableLoadingCircle = true;
     });
     GamesListService gameslistService = new GamesListService();
@@ -100,7 +103,9 @@ class _SearchResult extends State<SearchResult> {
     await Future.delayed(Duration(seconds: 4));
     setState(() {
       gamesInHomePage.addAll(gamesListInfo.getGamesList);
+      // change the url to the new one
       nextPage = gamesListInfo.getNextgame;
+      // hide the loading circle
       enableLoadingCircle = false;
     });
   }

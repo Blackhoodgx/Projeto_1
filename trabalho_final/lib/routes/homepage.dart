@@ -14,7 +14,9 @@ class Homepage extends StatefulWidget {
 
 class _Homepage extends State<Homepage> {
   @override
+  // get the first url to make the request
   String nextPage = urlRawgDefault;
+  // save in a list the object game create for the data of the api
   List gamesInHomePage = <Game>[];
   bool enableLoadingCircle = true;
   final ScrollController _scrollController = ScrollController();
@@ -82,15 +84,19 @@ class _Homepage extends State<Homepage> {
 // function to use the api, the function recive the url that it will use
   Future<void> getListofGames(urlListOfGames) async {
     setState(() {
+      // show loading circle
       enableLoadingCircle = true;
     });
     GamesListService gameslistService = new GamesListService();
     GamesListInfo gamesListInfo =
         await gameslistService.getGames(urlListOfGames);
+                // force the program to await to end getGames
     await Future.delayed(Duration(seconds: 4));
     setState(() {
       gamesInHomePage.addAll(gamesListInfo.getGamesList);
+      // change the url to the new one
       nextPage = gamesListInfo.getNextgame;
+      // hide loading circle
       enableLoadingCircle = false;
     });
   }

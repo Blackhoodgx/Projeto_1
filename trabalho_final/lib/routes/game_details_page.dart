@@ -25,7 +25,9 @@ class _GameDetialsPage extends State<GameDetialsPage> {
   final ScrollController _scrollController = ScrollController();
   void initState() {
     GameDetailsUrl gameDetailsUrl = GameDetailsUrl();
+    // add the id to the url
     gameDetailsUrl.addIdNumber = id;
+    // get the url it the id
     gameUrl = gameDetailsUrl.getGameDetailsUrls;
     getGamesInfo(gameUrl);
     super.initState();
@@ -57,12 +59,14 @@ class _GameDetialsPage extends State<GameDetialsPage> {
 
   Future<void> getGamesInfo(urlGameDetail) async {
     setState(() {
+      // show the loading circle
       enableLoadingCircle = true;
     });
     GameDetailService gameDetailService = new GameDetailService();
     GameDetails gameDetails = await gameDetailService.getDetail(urlGameDetail);
     setState(() {
       gameInfo.add(gameDetails);
+      // hide the loading circle
       enableLoadingCircle = false;
     });
   }
